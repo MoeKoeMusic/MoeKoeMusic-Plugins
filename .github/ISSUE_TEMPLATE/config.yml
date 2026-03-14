@@ -1,0 +1,17 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 🚀 示例插件
+    url: https://github.com/MoeKoeMusic/moekoe-helper
+    about: 这是一个示例插件，展示了如何编写一个符合规范的插件
+  - name: 🌈 社区交流
+    url: https://github.com/iAJue/MoeKoeMusic/discussions
+    about: 加入我们的社区进行交流和讨论
+  - name: 📚 项目文档
+    url: https://music.moekoe.cn/
+    about: 查看项目文档以获取更多帮助信息
+  - name: 🛠️ 开发与编译
+    url: https://github.com/iAJue/MoeKoeMusic?tab=readme-ov-file#%EF%B8%8F-%E5%BC%80%E5%8F%91
+    about: 了解项目如何进行开发和编译
+  - name: 🤝 贡献指南
+    url: https://github.com/iAJue/MoeKoeMusic/blob/main/CONTRIBUTING.md
+    about: 了解如何为项目做出贡献

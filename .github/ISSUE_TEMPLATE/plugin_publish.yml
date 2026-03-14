@@ -1,0 +1,119 @@
+name: 📦 上架插件
+description: 申请新上架插件，或更新一个已上架插件
+title: "[Plugin]: "
+labels:
+  - plugin
+  - publish
+body:
+  - type: markdown
+    attributes:
+      value: |
+        请完整填写以下信息。提交后，维护者审核通过后才会进入插件市场。
+        如果插件需要先编译才能安装，请确保仓库中存在可被自动识别的构建产物来源。
+
+  - type: dropdown
+    id: operation_type
+    attributes:
+      label: 操作类型
+      description: 选择本次提交是新上架还是更新已上架插件
+      options:
+        - 新上架
+        - 更新插件
+    validations:
+      required: true
+
+  - type: input
+    id: plugin_name
+    attributes:
+      label: 插件名称
+      description: 用于在市场中展示的名称
+      placeholder: 例如：歌词增强器
+    validations:
+      required: true
+
+  - type: input
+    id: plugin_id
+    attributes:
+      label: 插件唯一 ID
+      description: 建议使用稳定且唯一的标识，例如 author.plugin-name
+      placeholder: 例如：alice.lyric-enhancer
+    validations:
+      required: true
+
+  - type: textarea
+    id: plugin_description
+    attributes:
+      label: 插件描述
+      description: 简要说明插件作用
+      placeholder: 例如：为播放器增加歌词翻译、滚动定位和样式增强功能。
+    validations:
+      required: true
+
+  - type: input
+    id: repository_url
+    attributes:
+      label: GitHub 仓库地址
+      description: 插件源码仓库，需为公开可访问仓库
+      placeholder: https://github.com/owner/repo
+    validations:
+      required: true
+
+  - type: dropdown
+    id: build_required
+    attributes:
+      label: 安装前是否需要编译
+      options:
+        - 否，整个仓库可直接作为插件包安装
+        - 是，需要先编译产物才能安装
+    validations:
+      required: true
+
+  - type: dropdown
+    id: network_access
+    attributes:
+      label: 是否包含网络请求
+      description: 插件是否会主动访问第三方网络服务
+      options:
+        - 否
+        - 是
+    validations:
+      required: true
+
+  - type: dropdown
+    id: file_access
+    attributes:
+      label: 是否包含本地文件读写
+      description: 插件是否会读取或写入用户本地文件
+      options:
+        - 否
+        - 是
+    validations:
+      required: true
+
+  - type: dropdown
+    id: binary_content
+    attributes:
+      label: 是否包含可执行二进制
+      description: 例如 exe、dll、so、node 原生模块等
+      options:
+        - 否
+        - 是
+    validations:
+      required: true
+
+  - type: textarea
+    id: extra_notes
+    attributes:
+      label: 补充说明
+      description: 可填写测试方式、依赖说明、构建说明、插件配置位置、注意事项等
+      placeholder: 如无可留空
+
+  - type: checkboxes
+    id: confirmations
+    attributes:
+      label: 提交确认
+      options:
+        - label: 我确认我是该插件作者或已获得作者明确授权提交
+          required: true
+        - label: 我确认该版本通过了基本功能自测，且描述信息真实有效
+          required: true

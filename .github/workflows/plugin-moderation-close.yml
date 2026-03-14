@@ -1,0 +1,57 @@
+name: Apply plugin moderation result
+
+on:
+  issues:
+    types:
+      - closed
+
+permissions:
+  contents: write
+  issues: read
+  pull-requests: write
+
+jobs:
+  apply-moderation-result:
+    if: ${{ github.event.issue.pull_request == null }}
+    runs-on: ubuntu-latest
+    concurrency:
+      group: plugin-moderation-${{ github.event.issue.number }}
+      cancel-in-progress: true
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Apply moderation result
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: node scripts/plugin-moderation-close.js
+
+      - name: Create moderation update pull request
+        uses: peter-evans/create-pull-request@v6
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: "chore: apply moderation result from issue #${{ github.event.issue.number }}"
+          branch: "bot/plugin-moderation-issue-${{ github.event.issue.number }}"
+          delete-branch: true
+          title: "chore: apply moderation result from issue #${{ github.event.issue.number }}"
+          body: |
+            This PR is generated automatically from issue #${{ github.event.issue.number }}.
+
+            - Source issue: #${{ github.event.issue.number }}
+            - Action: apply plugin moderation result
+            - Updated files: `plugins.json`, `README.md`
+
+            Merge this PR to apply the approved moderation result.
+          labels: |
+            plugin
+          add-paths: |
+            plugins.json
+            README.md

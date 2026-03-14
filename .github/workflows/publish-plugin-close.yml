@@ -1,0 +1,57 @@
+name: Register approved plugin
+
+on:
+  issues:
+    types:
+      - closed
+
+permissions:
+  contents: write
+  issues: read
+  pull-requests: write
+
+jobs:
+  register-approved-plugin:
+    if: ${{ github.event.issue.pull_request == null }}
+    runs-on: ubuntu-latest
+    concurrency:
+      group: register-plugin-${{ github.event.issue.number }}
+      cancel-in-progress: true
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Register plugin from completed issue
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: node scripts/publish-plugin-close.js
+
+      - name: Create registry update pull request
+        uses: peter-evans/create-pull-request@v6
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: "chore: register plugin from issue #${{ github.event.issue.number }}"
+          branch: "bot/register-plugin-issue-${{ github.event.issue.number }}"
+          delete-branch: true
+          title: "chore: register plugin from issue #${{ github.event.issue.number }}"
+          body: |
+            This PR is generated automatically from issue #${{ github.event.issue.number }}.
+
+            - Source issue: #${{ github.event.issue.number }}
+            - Action: register approved plugin
+            - Updated files: `plugins.json`, `README.md`
+
+            Merge this PR to publish the approved plugin into the market index.
+          labels: |
+            plugin
+          add-paths: |
+            plugins.json
+            README.md

@@ -1,0 +1,84 @@
+name: 🗑️ 下架插件
+description: 申请下架插件，或举报插件存在安全、侵权、恶意行为等问题
+title: "[Plugin Review]: "
+labels:
+  - plugin
+  - moderation
+body:
+  - type: markdown
+    attributes:
+      value: |
+        这个模板同时用于：
+        - 作者或维护者申请下架插件
+        - 用户举报插件存在安全、侵权、恶意行为或其他问题
+
+  - type: dropdown
+    id: request_type
+    attributes:
+      label: 处理类型
+      options:
+        - 申请下架
+        - 举报问题
+    validations:
+      required: true
+
+  - type: input
+    id: plugin_name
+    attributes:
+      label: 插件名称
+      placeholder: 例如：歌词增强器
+    validations:
+      required: true
+
+  - type: input
+    id: plugin_id
+    attributes:
+      label: 插件唯一 ID
+      placeholder: 例如：alice.lyric-enhancer
+    validations:
+      required: true
+
+  - type: input
+    id: repository_url
+    attributes:
+      label: 插件仓库或市场页面链接
+      description: 至少提供一个可用于定位插件的链接
+      placeholder: https://github.com/owner/repo
+    validations:
+      required: true
+
+  - type: dropdown
+    id: request_reason
+    attributes:
+      label: 原因分类
+      options:
+        - 作者主动下架
+        - 停止维护
+        - 迁移到新仓库
+        - 功能已废弃
+        - 安全风险
+        - 恶意行为
+        - 法务或版权原因
+        - 冒充作者
+        - 违规内容
+        - 功能严重异常
+        - 其他
+    validations:
+      required: true
+
+  - type: textarea
+    id: issue_description
+    attributes:
+      label: 详细说明
+      description: 说明问题背景、下架原因、影响范围、预期处理方式等
+      placeholder: 请尽量写清楚问题是什么、为什么需要处理、希望如何处理
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: confirmations
+    attributes:
+      label: 提交确认
+      options:
+        - label: 我确认以上信息真实有效，并愿意配合维护者补充说明
+          required: true
