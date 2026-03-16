@@ -107,7 +107,7 @@ function buildPluginIconCell(plugin) {
   }
 
   const alt = escapeHtmlAttribute(plugin.name || plugin.id || 'plugin icon');
-  return `<img src="${iconUrl}" alt="${alt}" width="16" height="16">`;
+  return `<img src="${iconUrl}" alt="${alt}" width="64" height="64">`;
 }
 
 function resolvePluginIconUrl(plugin) {
