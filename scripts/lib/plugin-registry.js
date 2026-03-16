@@ -77,15 +77,16 @@ function updateReadmePluginList() {
 }
 
 function buildPluginTable(plugins) {
-  const rows = Array.isArray(plugins) && plugins.length > 0 ? plugins.map(toPluginTableRow) : ['| - | 暂无插件 | - | - | - | - | - |'];
+  const rows = Array.isArray(plugins) && plugins.length > 0 ? plugins.map(toPluginTableRow) : ['| - | - | 暂无插件 | - | - | - | - | - |'];
   return [
-    '| ID | 名称 | 描述 | 版本 | 状态 | 作者 | 下载地址 |',
-    '| --- | --- | --- | --- | --- | --- | --- |',
+    '| 图标 | ID | 名称 | 描述 | 版本 | 状态 | 作者 | 下载地址 |',
+    '| --- | --- | --- | --- | --- | --- | --- | --- |',
     ...rows,
   ].join('\n');
 }
 
 function toPluginTableRow(plugin) {
+  const iconCell = buildPluginIconCell(plugin);
   const cells = [
     plugin.id,
     plugin.name || plugin.id,
@@ -96,7 +97,29 @@ function toPluginTableRow(plugin) {
   ].map(escapeMarkdownCell);
 
   const downloadLink = plugin.downloadUrl ? `[下载](${plugin.downloadUrl})` : '-';
-  return `| ${cells[0]} | ${cells[1]} | ${cells[2]} | ${cells[3]} | ${cells[4]} | ${cells[5]} | ${downloadLink} |`;
+  return `| ${iconCell} | ${cells[0]} | ${cells[1]} | ${cells[2]} | ${cells[3]} | ${cells[4]} | ${cells[5]} | ${downloadLink} |`;
+}
+
+function buildPluginIconCell(plugin) {
+  const iconUrl = resolvePluginIconUrl(plugin);
+  if (!iconUrl) {
+    return '-';
+  }
+
+  const alt = escapeHtmlAttribute(plugin.name || plugin.id || 'plugin icon');
+  return `<img src="${iconUrl}" alt="${alt}" width="16" height="16">`;
+}
+
+function resolvePluginIconUrl(plugin) {
+  if (plugin?.iconUrl) {
+    return plugin.iconUrl;
+  }
+
+  if (plugin?.snapshot?.iconUrl) {
+    return plugin.snapshot.iconUrl;
+  }
+
+  return '';
 }
 
 function formatPluginStatus(status) {
@@ -113,6 +136,14 @@ function formatPluginStatus(status) {
 
 function escapeMarkdownCell(value) {
   return String(value || '-').replace(/\|/g, '\\|').replace(/\n/g, '<br>');
+}
+
+function escapeHtmlAttribute(value) {
+  return String(value || '')
+    .replace(/&/g, '&amp;')
+    .replace(/"/g, '&quot;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;');
 }
 
 module.exports = {

@@ -33,7 +33,7 @@ MoeKoeMusic 官方插件登记与索引仓库。
 2. 选择 `操作类型`
    - `新上架`
    - `更新插件`
-3. 填写插件名称、插件 ID、仓库地址、描述等信息
+3. 填写插件名称、仓库地址、描述等信息
 4. Action 自动进行基础校验
 5. 维护者人工审核
 6. 审核通过后使用 `Close as completed`
@@ -58,12 +58,12 @@ MoeKoeMusic 官方插件登记与索引仓库。
 ### 上架插件的校验规则
 
 - 必填字段必须完整
-- `plugin_id` 必须符合规范
 - `新上架` 时，插件 ID 不能已存在
 - `更新插件` 时，插件 ID 必须已存在
 - `更新插件` 必须由当前插件作者本人提交
 - 插件仓库必须可公开访问
 - 仓库中必须存在 `manifest.json`
+- `manifest.json` 中必须包含合法的 `plugin_id`
 - 审核只做元数据和静态信息检查，不执行第三方插件代码
 
 ### 下架插件的校验规则
@@ -97,6 +97,7 @@ MoeKoeMusic 官方插件登记与索引仓库。
 - `id`：插件唯一 ID
 - `name`：插件名称
 - `description`：插件描述
+- `iconUrl`：插件图标地址
 - `version`：当前已审核版本
 - `status`：插件状态
 - `author`：提交该插件申请的 GitHub 用户名
@@ -144,7 +145,7 @@ Issue 关闭方式含义如下：
 ## 插件列表
 
 <!-- PLUGIN_LIST_START -->
-| ID | 名称 | 描述 | 版本 | 状态 | 作者 | 下载地址 |
-| --- | --- | --- | --- | --- | --- | --- |
-| custom-background | MoeKoe Music Library | 这是一个为 MoeKoe Music Library 页面开发的简单自定义背景和歌单封面插件。 | 1.2.0 | 🟢 | iAJue | [下载](https://github.com/MoeKoeMusic/custom-background/tree/767202e4e8305b097d1021de8315b268bffd53d3) |
+| 图标 | ID | 名称 | 描述 | 版本 | 状态 | 作者 | 下载地址 |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| - | custom-background | MoeKoe Music Library | 这是一个为 MoeKoe Music Library 页面开发的简单自定义背景和歌单封面插件。 | 1.2.0 | 🟢 | iAJue | [下载](https://github.com/MoeKoeMusic/custom-background/tree/767202e4e8305b097d1021de8315b268bffd53d3) |
 <!-- PLUGIN_LIST_END -->

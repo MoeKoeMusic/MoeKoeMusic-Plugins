@@ -34,6 +34,8 @@ async function buildReleaseSnapshot(context, repositoryRef, repository) {
   return {
     type: 'release-asset',
     pluginId: manifest.pluginId,
+    iconPath: manifest.iconPath,
+    iconUrl: buildRawGitHubContentUrl(repository.full_name, release.tag_name, manifest.iconPath),
     version: manifest.version,
     repository: repository.full_name,
     repositoryUrl: repository.html_url,
@@ -69,6 +71,8 @@ async function buildRepositorySnapshot(context, repositoryRef, repository) {
   return {
     type: 'repository-tree',
     pluginId: manifest.pluginId,
+    iconPath: manifest.iconPath,
+    iconUrl: buildRawGitHubContentUrl(repository.full_name, branch.commit.sha, manifest.iconPath),
     version: manifest.version,
     repository: repository.full_name,
     repositoryUrl: repository.html_url,
@@ -87,6 +91,15 @@ function buildRepositorySnapshotUrl(repositoryFullName, ref) {
 
 function buildRepositoryArchiveUrl(repositoryFullName, ref) {
   return `https://codeload.github.com/${repositoryFullName}/zip/${ref}`;
+}
+
+function buildRawGitHubContentUrl(repositoryFullName, ref, filePath) {
+  const normalizedPath = String(filePath || '').trim().replace(/^\/+/, '');
+  if (!normalizedPath) {
+    return '';
+  }
+
+  return `https://raw.githubusercontent.com/${repositoryFullName}/${ref}/${normalizedPath}`;
 }
 
 function validateManifest(manifest) {

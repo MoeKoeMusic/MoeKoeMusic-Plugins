@@ -92,6 +92,7 @@ function buildPluginRecord(issue, payload, existingPlugin) {
     id: payload.plugin.id,
     name: payload.plugin.name,
     description: payload.plugin.description,
+    iconUrl: payload.snapshot.iconUrl || existingPlugin?.iconUrl || '',
     version: payload.snapshot.version,
     status: nextStatus,
     author: existingPlugin?.author || payload.issueAuthor,

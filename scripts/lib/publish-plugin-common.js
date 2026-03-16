@@ -181,6 +181,7 @@ async function fetchManifest(context, repositoryRef, branch, options = {}) {
       path: MANIFEST_FILE,
       content,
       pluginId: typeof content.plugin_id === 'string' ? content.plugin_id.trim() : '',
+      iconPath: resolveManifestIconPath(content.icons),
       version: typeof content.version === 'string' ? content.version.trim() : '',
       error: null,
     };
@@ -189,10 +190,30 @@ async function fetchManifest(context, repositoryRef, branch, options = {}) {
       path: MANIFEST_FILE,
       content: null,
       pluginId: '',
+      iconPath: '',
       version: '',
       error: error.message,
     };
   }
+}
+
+function resolveManifestIconPath(icons) {
+  if (!icons || typeof icons !== 'object' || Array.isArray(icons)) {
+    return '';
+  }
+
+  for (const value of Object.values(icons)) {
+    if (typeof value !== 'string') {
+      continue;
+    }
+
+    const normalized = value.trim().replace(/^\.\/+/, '').replace(/^\/+/, '');
+    if (normalized) {
+      return normalized;
+    }
+  }
+
+  return '';
 }
 
 function isYesOption(value) {
@@ -265,4 +286,5 @@ module.exports = {
   parseIssueForm,
   parseIssueSections,
   parseRepositoryReference,
+  resolveManifestIconPath,
 };
