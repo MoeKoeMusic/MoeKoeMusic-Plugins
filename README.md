@@ -147,5 +147,5 @@ Issue 关闭方式含义如下：
 <!-- PLUGIN_LIST_START -->
 | 图标 | ID | 名称 | 描述 | 版本 | 状态 | 作者 | 下载地址 |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| - | custom-background | MoeKoe Music Library | 这是一个为 MoeKoe Music Library 页面开发的简单自定义背景和歌单封面插件。 | 1.2.0 | 🟢 | iAJue | [下载](https://github.com/MoeKoeMusic/custom-background/tree/767202e4e8305b097d1021de8315b268bffd53d3) |
+| <img src="https://raw.githubusercontent.com/MoeKoeMusic/custom-background/9f062085018c6dc06ef597778d4a89eeeaeddacf/icons/icon16.png" alt="MoeKoe Music Library" width="16" height="16"> | custom-background | MoeKoe Music Library | 这是一个为 MoeKoe Music Library 页面开发的简单自定义背景和歌单封面插件。 | 1.2.1 | 🟢 | iAJue | [下载](https://github.com/MoeKoeMusic/custom-background/tree/9f062085018c6dc06ef597778d4a89eeeaeddacf) |
 <!-- PLUGIN_LIST_END -->
