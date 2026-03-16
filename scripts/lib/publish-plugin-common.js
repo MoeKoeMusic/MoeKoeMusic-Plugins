@@ -180,6 +180,7 @@ async function fetchManifest(context, repositoryRef, branch, options = {}) {
     return {
       path: MANIFEST_FILE,
       content,
+      pluginId: typeof content.plugin_id === 'string' ? content.plugin_id.trim() : '',
       version: typeof content.version === 'string' ? content.version.trim() : '',
       error: null,
     };
@@ -187,6 +188,7 @@ async function fetchManifest(context, repositoryRef, branch, options = {}) {
     return {
       path: MANIFEST_FILE,
       content: null,
+      pluginId: '',
       version: '',
       error: error.message,
     };

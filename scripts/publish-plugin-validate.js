@@ -19,7 +19,6 @@ const STATUS_LABELS = ['check-passed', 'check-failed'];
 const REQUIRED_FIELDS = [
   ['操作类型', 'operationType'],
   ['插件名称', 'pluginName'],
-  ['插件唯一 ID', 'pluginId'],
   ['插件描述', 'pluginDescription'],
   ['GitHub 仓库地址', 'repositoryUrl'],
   ['安装前是否需要编译', 'buildRequired'],
@@ -73,7 +72,7 @@ function createResult(issue, formData) {
       issueAuthor: issue.user?.login || null,
       operationType: formData.operationType || '',
       plugin: {
-        id: formData.pluginId || '',
+        id: '',
         name: formData.pluginName || '',
         description: formData.pluginDescription || '',
         repositoryUrl: formData.repositoryUrl || '',
@@ -98,10 +97,6 @@ function validateFormFields(formData, result) {
     result.failures.push('操作类型无效，只允许“新上架”或“更新插件”。');
   }
 
-  if (formData.pluginId && !/^[a-z0-9]+(?:[._-][a-z0-9]+)+$/i.test(formData.pluginId)) {
-    result.failures.push('插件唯一 ID 格式无效，建议使用 `author.plugin-name` 形式。');
-  }
-
   if (formData.pluginDescription && formData.pluginDescription.length < 10) {
     result.failures.push('插件描述过短，请至少提供更清晰的功能说明。');
   }
@@ -113,24 +108,11 @@ function validateFormFields(formData, result) {
 }
 
 async function validateOperation(context, issue, formData, result) {
-  const existingPlugin = findPluginById(formData.pluginId);
   const repositoryRef = parseRepositoryReference(formData.repositoryUrl);
 
   if (!repositoryRef) {
     result.failures.push('GitHub 仓库地址格式无效，必须是 `https://github.com/owner/repo`。');
     return;
-  }
-
-  if (formData.operationType === '新上架' && existingPlugin) {
-    result.failures.push(`插件 ID \`${formData.pluginId}\` 已存在，不能重复新上架。`);
-    return;
-  }
-
-  if (formData.operationType === '更新插件') {
-    validateUpdatePermission(existingPlugin, formData, issue, result);
-    if (result.failures.length > 0) {
-      return;
-    }
   }
 
   const repository = await fetchRepository(context, repositoryRef, { allow404: true });
@@ -153,19 +135,34 @@ async function validateOperation(context, issue, formData, result) {
     return;
   }
 
+  result.snapshot = snapshot;
+  result.payload.plugin.id = snapshot.pluginId;
+  result.payload.snapshot = snapshot;
+
+  const existingPlugin = findPluginById(snapshot.pluginId);
+  if (formData.operationType === '新上架' && existingPlugin) {
+    result.failures.push(`插件 ID \`${snapshot.pluginId}\` 已存在，不能重复新上架。`);
+    return;
+  }
+
+  if (formData.operationType === '更新插件') {
+    validateUpdatePermission(existingPlugin, snapshot.pluginId, formData, issue, result);
+    if (result.failures.length > 0) {
+      return;
+    }
+  }
+
   if (formData.operationType === '更新插件' && existingPlugin?.version === snapshot.version) {
     result.failures.push(`更新插件时版本号不能与当前已上架版本相同：\`${snapshot.version}\`。`);
     return;
   }
 
-  result.snapshot = snapshot;
   result.payload.status = 'check-passed';
-  result.payload.snapshot = snapshot;
 }
 
-function validateUpdatePermission(existingPlugin, formData, issue, result) {
+function validateUpdatePermission(existingPlugin, pluginId, formData, issue, result) {
   if (!existingPlugin) {
-    result.failures.push(`插件 ID \`${formData.pluginId}\` 不存在，无法更新。`);
+    result.failures.push(`插件 ID \`${pluginId}\` 不存在，无法更新。`);
     return;
   }
 

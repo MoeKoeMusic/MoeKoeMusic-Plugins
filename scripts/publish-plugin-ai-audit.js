@@ -114,7 +114,7 @@ async function collectAuditInput(workspace, repository, snapshot, formData) {
     repository: repository.full_name,
     repositoryUrl: repository.html_url,
     operationType: formData.operationType,
-    pluginId: formData.pluginId,
+    pluginId: snapshot.pluginId,
     pluginName: formData.pluginName,
     buildRequired: isYesOption(formData.buildRequired),
     snapshot,

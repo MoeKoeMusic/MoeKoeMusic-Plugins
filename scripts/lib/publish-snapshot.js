@@ -26,18 +26,14 @@ async function buildReleaseSnapshot(context, repositoryRef, repository) {
   if (!manifest) {
     return { error: `仓库在 tag \`${release.tag_name}\` 中未找到 ${MANIFEST_FILE}。` };
   }
-  if (manifest.error) {
-    return { error: `${MANIFEST_FILE} 不是有效 JSON：${manifest.error}` };
-  }
-  if (!manifest.version) {
-    return { error: `${MANIFEST_FILE} 缺少 version 字段。` };
-  }
-  if (!isValidVersion(manifest.version)) {
-    return { error: `${MANIFEST_FILE} 中的 version 格式无效：\`${manifest.version}\`。` };
+  const manifestError = validateManifest(manifest);
+  if (manifestError) {
+    return { error: manifestError };
   }
 
   return {
     type: 'release-asset',
+    pluginId: manifest.pluginId,
     version: manifest.version,
     repository: repository.full_name,
     repositoryUrl: repository.html_url,
@@ -65,18 +61,14 @@ async function buildRepositorySnapshot(context, repositoryRef, repository) {
   if (!manifest) {
     return { error: `仓库当前快照中未找到 ${MANIFEST_FILE}。` };
   }
-  if (manifest.error) {
-    return { error: `${MANIFEST_FILE} 不是有效 JSON：${manifest.error}` };
-  }
-  if (!manifest.version) {
-    return { error: `${MANIFEST_FILE} 缺少 version 字段。` };
-  }
-  if (!isValidVersion(manifest.version)) {
-    return { error: `${MANIFEST_FILE} 中的 version 格式无效：\`${manifest.version}\`。` };
+  const manifestError = validateManifest(manifest);
+  if (manifestError) {
+    return { error: manifestError };
   }
 
   return {
     type: 'repository-tree',
+    pluginId: manifest.pluginId,
     version: manifest.version,
     repository: repository.full_name,
     repositoryUrl: repository.html_url,
@@ -95,6 +87,30 @@ function buildRepositorySnapshotUrl(repositoryFullName, ref) {
 
 function buildRepositoryArchiveUrl(repositoryFullName, ref) {
   return `https://codeload.github.com/${repositoryFullName}/zip/${ref}`;
+}
+
+function validateManifest(manifest) {
+  if (manifest.error) {
+    return `${MANIFEST_FILE} 不是有效 JSON：${manifest.error}`;
+  }
+  if (!manifest.pluginId) {
+    return `${MANIFEST_FILE} 缺少 plugin_id 字段。`;
+  }
+  if (!isValidPluginId(manifest.pluginId)) {
+    return `${MANIFEST_FILE} 中的 plugin_id 格式无效：\`${manifest.pluginId}\`。`;
+  }
+  if (!manifest.version) {
+    return `${MANIFEST_FILE} 缺少 version 字段。`;
+  }
+  if (!isValidVersion(manifest.version)) {
+    return `${MANIFEST_FILE} 中的 version 格式无效：\`${manifest.version}\`。`;
+  }
+
+  return '';
+}
+
+function isValidPluginId(pluginId) {
+  return /^[a-z0-9]+(?:[._-][a-z0-9]+)+$/i.test(String(pluginId || '').trim());
 }
 
 function isValidVersion(version) {

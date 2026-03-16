@@ -31,15 +31,6 @@ body:
     validations:
       required: true
 
-  - type: input
-    id: plugin_id
-    attributes:
-      label: 插件唯一 ID
-      description: 建议使用稳定且唯一的标识，例如 author.plugin-name
-      placeholder: 例如：alice.lyric-enhancer
-    validations:
-      required: true
-
   - type: textarea
     id: plugin_description
     attributes:
