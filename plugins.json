@@ -1,5 +1,38 @@
 [
   {
+    "id": "artist-plugin",
+    "name": "歌手写真轮播",
+    "description": "为播放器添加歌手写真轮播功能，在全屏歌词界面展示歌手写真背景图并自动轮播",
+    "iconUrl": "https://raw.githubusercontent.com/chenyang137/MoeKoeMusic-artist-plugin/f66929e9a6dbba90e52637b380b7250050e2d7d4/icon-48.png",
+    "version": "1.0.0",
+    "status": "active",
+    "author": "chenyang137",
+    "repositoryUrl": "https://github.com/chenyang137/MoeKoeMusic-artist-plugin",
+    "downloadUrl": "https://github.com/chenyang137/MoeKoeMusic-artist-plugin/tree/f66929e9a6dbba90e52637b380b7250050e2d7d4",
+    "buildRequired": false,
+    "networkAccess": true,
+    "fileAccess": false,
+    "binaryContent": false,
+    "approvedAt": "2026-03-17T05:44:51.334Z",
+    "approvedIssueNumber": 8,
+    "approvedIssueUrl": "https://github.com/MoeKoeMusic/MoeKoeMusic-Plugins/issues/8",
+    "snapshot": {
+      "type": "repository-tree",
+      "pluginId": "artist-plugin",
+      "iconPath": "icon-48.png",
+      "iconUrl": "https://raw.githubusercontent.com/chenyang137/MoeKoeMusic-artist-plugin/f66929e9a6dbba90e52637b380b7250050e2d7d4/icon-48.png",
+      "version": "1.0.0",
+      "repository": "chenyang137/MoeKoeMusic-artist-plugin",
+      "repositoryUrl": "https://github.com/chenyang137/MoeKoeMusic-artist-plugin",
+      "reviewRef": "f66929e9a6dbba90e52637b380b7250050e2d7d4",
+      "snapshotUrl": "https://github.com/chenyang137/MoeKoeMusic-artist-plugin/tree/f66929e9a6dbba90e52637b380b7250050e2d7d4",
+      "branch": "main",
+      "commitSha": "f66929e9a6dbba90e52637b380b7250050e2d7d4",
+      "downloadUrl": "https://github.com/chenyang137/MoeKoeMusic-artist-plugin/tree/f66929e9a6dbba90e52637b380b7250050e2d7d4",
+      "release": null
+    }
+  },
+  {
     "id": "custom-background",
     "name": "MoeKoe Music Library",
     "description": "这是一个为 MoeKoe Music Library 页面开发的简单自定义背景和歌单封面插件。",

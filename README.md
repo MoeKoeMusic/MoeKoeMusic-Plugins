@@ -147,5 +147,6 @@ Issue 关闭方式含义如下：
 <!-- PLUGIN_LIST_START -->
 | 图标 | ID | 名称 | 描述 | 版本 | 状态 | 作者 | 下载地址 |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| <img src="https://raw.githubusercontent.com/MoeKoeMusic/custom-background/9f062085018c6dc06ef597778d4a89eeeaeddacf/icons/icon16.png" alt="MoeKoe Music Library" width="16" height="16"> | custom-background | MoeKoe Music Library | 这是一个为 MoeKoe Music Library 页面开发的简单自定义背景和歌单封面插件。 | 1.2.1 | 🟢 | iAJue | [下载](https://github.com/MoeKoeMusic/custom-background/tree/9f062085018c6dc06ef597778d4a89eeeaeddacf) |
+| <img src="https://raw.githubusercontent.com/chenyang137/MoeKoeMusic-artist-plugin/f66929e9a6dbba90e52637b380b7250050e2d7d4/icon-48.png" alt="歌手写真轮播" width="64" height="64"> | artist-plugin | 歌手写真轮播 | 为播放器添加歌手写真轮播功能，在全屏歌词界面展示歌手写真背景图并自动轮播 | 1.0.0 | 🟢 | chenyang137 | [下载](https://github.com/chenyang137/MoeKoeMusic-artist-plugin/tree/f66929e9a6dbba90e52637b380b7250050e2d7d4) |
+| <img src="https://raw.githubusercontent.com/MoeKoeMusic/custom-background/9f062085018c6dc06ef597778d4a89eeeaeddacf/icons/icon16.png" alt="MoeKoe Music Library" width="64" height="64"> | custom-background | MoeKoe Music Library | 这是一个为 MoeKoe Music Library 页面开发的简单自定义背景和歌单封面插件。 | 1.2.1 | 🟢 | iAJue | [下载](https://github.com/MoeKoeMusic/custom-background/tree/9f062085018c6dc06ef597778d4a89eeeaeddacf) |
 <!-- PLUGIN_LIST_END -->
