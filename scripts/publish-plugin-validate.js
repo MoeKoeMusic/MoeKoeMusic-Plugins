@@ -1,3 +1,4 @@
+// 脚本作用：校验插件上架/更新 Issue，生成校验评论并同步状态标签。
 const fs = require('fs');
 
 const {

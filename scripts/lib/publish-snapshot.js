@@ -1,3 +1,4 @@
+// 脚本作用：解析并校验仓库 manifest，生成用于发布入库的快照信息。
 const {
   MANIFEST_FILE,
   fetchBranch,
@@ -37,6 +38,7 @@ async function buildReleaseSnapshot(context, repositoryRef, repository) {
     iconPath: manifest.iconPath,
     iconUrl: buildRawGitHubContentUrl(repository.full_name, release.tag_name, manifest.iconPath),
     version: manifest.version,
+    minversion: manifest.minversion,
     repository: repository.full_name,
     repositoryUrl: repository.html_url,
     reviewRef: release.tag_name,
@@ -74,6 +76,7 @@ async function buildRepositorySnapshot(context, repositoryRef, repository) {
     iconPath: manifest.iconPath,
     iconUrl: buildRawGitHubContentUrl(repository.full_name, branch.commit.sha, manifest.iconPath),
     version: manifest.version,
+    minversion: manifest.minversion,
     repository: repository.full_name,
     repositoryUrl: repository.html_url,
     reviewRef: branch.commit.sha,
@@ -118,6 +121,12 @@ function validateManifest(manifest) {
   if (!isValidVersion(manifest.version)) {
     return `${MANIFEST_FILE} 中的 version 格式无效：\`${manifest.version}\`。`;
   }
+  if (manifest.minversionInvalidType) {
+    return `${MANIFEST_FILE} 中的 minversion 必须是字符串。`;
+  }
+  if (manifest.minversion && !isValidVersion(manifest.minversion)) {
+    return `${MANIFEST_FILE} 中的 minversion 格式无效：\`${manifest.minversion}\`。`;
+  }
 
   return '';
 }
@@ -127,7 +136,7 @@ function isValidPluginId(pluginId) {
 }
 
 function isValidVersion(version) {
-  return /^v?\d+\.\d+\.\d+(?:-[0-9A-Za-z.-]+)?(?:\+[0-9A-Za-z.-]+)?$/.test(String(version || '').trim());
+  return /^\d+\.\d+\.\d+$/.test(String(version || '').trim());
 }
 
 module.exports = {

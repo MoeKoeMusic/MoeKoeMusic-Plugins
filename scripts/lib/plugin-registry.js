@@ -1,3 +1,4 @@
+// 脚本作用：管理插件索引文件 plugins.json，并维护 README 中的插件列表展示。
 const fs = require('fs');
 const path = require('path');
 

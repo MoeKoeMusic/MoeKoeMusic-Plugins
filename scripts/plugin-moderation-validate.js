@@ -1,3 +1,4 @@
+// 脚本作用：校验插件下架/举报 Issue，生成自动审查评论并同步状态标签。
 const fs = require('fs');
 
 const {

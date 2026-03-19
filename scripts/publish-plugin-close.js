@@ -1,3 +1,4 @@
+// 脚本作用：在上架 Issue 以 completed 关闭后，将锁定快照写入 plugins.json 并更新 README 列表。
 const {
   githubRequest,
   isPublishIssue,
@@ -94,6 +95,7 @@ function buildPluginRecord(issue, payload, existingPlugin) {
     description: payload.plugin.description,
     iconUrl: payload.snapshot.iconUrl || existingPlugin?.iconUrl || '',
     version: payload.snapshot.version,
+    ...(payload.snapshot.minversion ? { minversion: payload.snapshot.minversion } : {}),
     status: nextStatus,
     author: existingPlugin?.author || payload.issueAuthor,
     repositoryUrl: payload.plugin.repositoryUrl,

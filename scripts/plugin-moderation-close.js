@@ -1,3 +1,4 @@
+// 脚本作用：在下架/举报 Issue 以 completed 关闭后，将目标插件状态更新为 delisted 并同步 README。
 const {
   isModerationIssue,
   loadContext,

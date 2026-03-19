@@ -1,3 +1,4 @@
+// 脚本作用：提供发布流程共用能力，包括上下文读取、Issue 解析、GitHub API 调用与 manifest 拉取。
 const fs = require('fs');
 
 const MANIFEST_FILE = 'manifest.json';
@@ -177,12 +178,15 @@ async function fetchManifest(context, repositoryRef, branch, options = {}) {
 
   try {
     const content = JSON.parse(Buffer.from(response.data.content, 'base64').toString('utf8'));
+    const minversion = parseManifestMinVersion(content.minversion);
     return {
       path: MANIFEST_FILE,
       content,
       pluginId: typeof content.plugin_id === 'string' ? content.plugin_id.trim() : '',
       iconPath: resolveManifestIconPath(content.icons),
       version: typeof content.version === 'string' ? content.version.trim() : '',
+      minversion: minversion.value,
+      minversionInvalidType: minversion.invalidType,
       error: null,
     };
   } catch (error) {
@@ -192,9 +196,23 @@ async function fetchManifest(context, repositoryRef, branch, options = {}) {
       pluginId: '',
       iconPath: '',
       version: '',
+      minversion: '',
+      minversionInvalidType: false,
       error: error.message,
     };
   }
+}
+
+function parseManifestMinVersion(value) {
+  if (value === undefined || value === null) {
+    return { value: '', invalidType: false };
+  }
+
+  if (typeof value !== 'string') {
+    return { value: '', invalidType: true };
+  }
+
+  return { value: value.trim(), invalidType: false };
 }
 
 function resolveManifestIconPath(icons) {

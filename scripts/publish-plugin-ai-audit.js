@@ -1,3 +1,4 @@
+// 脚本作用：对插件快照执行 AI 静态审查，并将审查结果回写到 Issue 评论与工作流摘要。
 const fs = require('fs');
 const os = require('os');
 const path = require('path');
