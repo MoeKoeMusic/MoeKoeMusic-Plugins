@@ -64,5 +64,39 @@
       "downloadUrl": "https://github.com/MoeKoeMusic/custom-background/tree/9f062085018c6dc06ef597778d4a89eeeaeddacf",
       "release": null
     }
+  },
+  {
+    "id": "Small-Audio-Info",
+    "name": "playbar歌曲信息显示",
+    "description": "在播放器右侧显示当前歌曲的格式和文件大小",
+    "iconUrl": "https://raw.githubusercontent.com/BB-CHICKEN/Small-Audio-Info/9ccc80130eefc03b49feec7d6ce26b0014323817/icons.jpg",
+    "version": "1.0.0",
+    "status": "active",
+    "author": "BB-CHICKEN",
+    "repositoryUrl": "https://github.com/BB-CHICKEN/Small-Audio-Info",
+    "downloadUrl": "https://github.com/BB-CHICKEN/Small-Audio-Info/tree/9ccc80130eefc03b49feec7d6ce26b0014323817",
+    "buildRequired": false,
+    "networkAccess": true,
+    "fileAccess": false,
+    "binaryContent": false,
+    "approvedAt": "2026-03-21T02:50:50.082Z",
+    "approvedIssueNumber": 13,
+    "approvedIssueUrl": "https://github.com/MoeKoeMusic/MoeKoeMusic-Plugins/issues/13",
+    "snapshot": {
+      "type": "repository-tree",
+      "pluginId": "Small-Audio-Info",
+      "iconPath": "icons.jpg",
+      "iconUrl": "https://raw.githubusercontent.com/BB-CHICKEN/Small-Audio-Info/9ccc80130eefc03b49feec7d6ce26b0014323817/icons.jpg",
+      "version": "1.0.0",
+      "minversion": "",
+      "repository": "BB-CHICKEN/Small-Audio-Info",
+      "repositoryUrl": "https://github.com/BB-CHICKEN/Small-Audio-Info",
+      "reviewRef": "9ccc80130eefc03b49feec7d6ce26b0014323817",
+      "snapshotUrl": "https://github.com/BB-CHICKEN/Small-Audio-Info/tree/9ccc80130eefc03b49feec7d6ce26b0014323817",
+      "branch": "main",
+      "commitSha": "9ccc80130eefc03b49feec7d6ce26b0014323817",
+      "downloadUrl": "https://github.com/BB-CHICKEN/Small-Audio-Info/tree/9ccc80130eefc03b49feec7d6ce26b0014323817",
+      "release": null
+    }
   }
 ]
