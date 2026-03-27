@@ -25,8 +25,7 @@ function findPluginById(pluginId) {
 
 function upsertPluginRecord(pluginRecord) {
   const next = readPluginRegistry().filter((item) => item?.id !== pluginRecord.id);
-  next.push(pluginRecord);
-  writePluginRegistry(next);
+  writePluginRegistry([pluginRecord, ...next]);
 }
 
 function updatePluginStatus(pluginId, status) {
@@ -48,8 +47,7 @@ function updatePluginStatus(pluginId, status) {
 
 function writePluginRegistry(plugins) {
   const pluginsPath = path.join(process.cwd(), 'plugins.json');
-  const next = [...plugins].sort((left, right) => String(left.name || left.id).localeCompare(String(right.name || right.id), 'zh-CN'));
-  fs.writeFileSync(pluginsPath, `${JSON.stringify(next, null, 2)}\n`, 'utf8');
+  fs.writeFileSync(pluginsPath, `${JSON.stringify(plugins, null, 2)}\n`, 'utf8');
 }
 
 function updateReadmePluginList() {
