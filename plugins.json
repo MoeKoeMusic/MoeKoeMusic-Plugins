@@ -1,8 +1,8 @@
 [
   {
     "id": "moekoe-equalizer",
-    "name": "MoeKoe EQ 均衡器音效插件 （提升听感）",
-    "description": "31段参数均衡器插件，为 MoeKoeMusic 提供音频处理，有效提升听感体验。\n\n**主要功能：**\n- 31段参数均衡器（20Hz-20kHz，±6dB 可调）\n- 11种内置预设（平坦、摇滚、古典、流行、爵士、低音增强、高音增强、人声、风雪调音、极致听感、醇美空间）\n- 自定义预设保存与管理\n- 音效增强（低频提升、清晰度、环绕声、混响等）\n- 输出增益与声道平衡控制\n- 实时 EQ 曲线可视化\n\n**首次使用：** 安装后请点击托盘 → MoeKoeMusic → 重启应用",
+    "name": "MoeKoe EQ 均衡器音效",
+    "description": "31段参数均衡器插件，为 MoeKoeMusic 提供音频处理，有效提升听感体验。\n**首次使用：** 安装后请点击托盘 → MoeKoeMusic → 重启应用",
     "iconUrl": "https://raw.githubusercontent.com/RTuioi/MoeKoe-EQ-Plugin/6d244c38c562ba211cce1d6948d8a21fc2ee4ad3/icons/icon16.svg",
     "version": "1.0.0",
     "minversion": "1.5.0",

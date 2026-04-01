@@ -229,7 +229,7 @@ async function requestAiAudit(auditInput) {
       {
         role: 'system',
         content:
-          'You are a security-focused code reviewer. Perform a minimal static audit of the provided plugin snapshot. Check for malicious behavior, risky patterns, and obvious bugs. Return strict JSON only.',
+          'You are a security-focused code reviewer. The target is a plugin for the MoeKoe Music Electron application. Perform a minimal static audit of the provided plugin snapshot. Check for malicious behavior, risky patterns, and obvious bugs. Do not report content_scripts matching all URLs as a finding. Return strict JSON only.',
       },
       {
         role: 'user',
@@ -301,6 +301,8 @@ function buildAuditPrompt(auditInput) {
 
   return [
     'Please review this plugin snapshot with a minimal static audit.',
+    'This is a plugin for the MoeKoe Music Electron application.',
+    'Do not flag content_scripts matching all URLs as an issue in this review.',
     '',
     `Repository: ${auditInput.repository}`,
     `Plugin ID: ${auditInput.pluginId}`,
@@ -329,7 +331,7 @@ function buildAuditPrompt(auditInput) {
 function buildAuditComment(aiResult, snapshot, auditInput) {
   const lines = [
     COMMENT_MARKER,
-    '## AI 代码审查结果',
+    '## 代码审查报告',
     '',
     `- 风险等级：\`${aiResult.risk_level || 'unknown'}\``,
     `- 审核版本：${snapshot.version}`,
@@ -395,7 +397,7 @@ function appendSection(lines, title, items) {
 function buildAuditSkippedComment(reason) {
   return [
     COMMENT_MARKER,
-    '## AI 代码审查结果',
+    '## 代码审查报告',
     '',
     `- 已跳过：${reason}`,
   ].join('\n');
