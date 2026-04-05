@@ -274,4 +274,37 @@
       "release": null
     }
   }
+  { 
+     "id": "lyrics-traditional-plugin", 
+     "name": "歌詞簡繁轉換", 
+     "description": "在全螢幕歌詞與桌面歌詞視窗中，將歌詞在簡體中文與繁體中文之間轉換顯示。", 
+     "iconUrl": "https://raw.githubusercontent.com/MoeKoeMusic/lyrics-traditional-plugin/main/logo.png", 
+     "version": "1.0.0", 
+     "status": "active", 
+     "author": "MoeKoe Music", 
+     "repositoryUrl": "https://github.com/MoeKoeMusic/lyrics-traditional-plugin", 
+     "downloadUrl": "https://github.com/MoeKoeMusic/lyrics-traditional-plugin/tree/main", 
+     "buildRequired": false, 
+     "networkAccess": false, 
+     "fileAccess": false, 
+     "binaryContent": false, 
+     "approvedAt": "2026-04-05T08:00:00.000Z", 
+     "approvedIssueNumber": 6, 
+     "approvedIssueUrl": "https://github.com/MoeKoeMusic/MoeKoeMusic-Plugins/issues/6", 
+     "snapshot": { 
+       "type": "repository-tree", 
+       "pluginId": "lyrics-traditional-plugin", 
+       "iconPath": "logo.png", 
+       "iconUrl": "https://raw.githubusercontent.com/MoeKoeMusic/lyrics-traditional-plugin/main/logo.png", 
+       "version": "1.0.0", 
+       "repository": "MoeKoeMusic/lyrics-traditional-plugin", 
+       "repositoryUrl": "https://github.com/MoeKoeMusic/lyrics-traditional-plugin", 
+       "reviewRef": "main", 
+       "snapshotUrl": "https://github.com/MoeKoeMusic/lyrics-traditional-plugin/tree/main", 
+       "branch": "main", 
+       "commitSha": "main", 
+       "downloadUrl": "https://github.com/MoeKoeMusic/lyrics-traditional-plugin/tree/main", 
+       "release": null 
+     } 
+   } 
 ]
