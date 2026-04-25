@@ -8,8 +8,9 @@ body:
   - type: markdown
     attributes:
       value: |
-        请完整填写以下信息。提交后，维护者审核通过后才会进入插件市场。
-        如果插件需要先编译才能安装，请确保仓库中存在可被自动识别的构建产物来源。
+        - 请完整填写以下信息。提交后，维护者审核通过后才会进入插件市场。
+        - 如果插件需要先编译才能安装，请确保仓库中存在可被自动识别的构建产物来源。
+        - 检测不通过可重复编辑issue，无需重复提交新的issue。
 
   - type: dropdown
     id: operation_type
@@ -96,7 +97,7 @@ body:
     id: extra_notes
     attributes:
       label: 补充说明
-      description: 可填写测试方式、依赖说明、构建说明、插件配置位置、注意事项等
+      description: 可填写更新记录、测试方式、依赖说明、构建说明、插件配置位置、注意事项等
       placeholder: 如无可留空
 
   - type: checkboxes

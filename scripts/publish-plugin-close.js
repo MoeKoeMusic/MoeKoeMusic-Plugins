@@ -1,6 +1,8 @@
 // 脚本作用：在上架 Issue 以 completed 关闭后，将锁定快照写入 plugins.json 并更新 README 列表。
 const {
+  getIssueActorLogin,
   githubRequest,
+  isIssueActionByMaintainer,
   isPublishIssue,
   loadContext,
 } = require('./lib/publish-plugin-common');
@@ -25,6 +27,11 @@ async function main() {
 
   if (issue.state_reason !== 'completed') {
     console.log(`当前关闭原因是 ${issue.state_reason || 'unknown'}，不执行入库。`);
+    return;
+  }
+
+  if (!(await isIssueActionByMaintainer(context))) {
+    console.log(`关闭 issue 的用户 ${getIssueActorLogin(context.payload) || 'unknown'} 不是仓库维护者，跳过入库。`);
     return;
   }
 

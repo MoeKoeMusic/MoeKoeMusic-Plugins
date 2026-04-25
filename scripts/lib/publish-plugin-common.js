@@ -40,6 +40,34 @@ function loadContext() {
   };
 }
 
+function getIssueActorLogin(payload) {
+  return payload?.sender?.login || '';
+}
+
+async function getRepositoryPermissionLevel(context, username) {
+  if (!username) {
+    return null;
+  }
+
+  const [owner, repo] = context.repository.split('/');
+  const response = await githubRequest(
+    context,
+    `/repos/${encodeURIComponent(owner)}/${encodeURIComponent(repo)}/collaborators/${encodeURIComponent(username)}/permission`,
+    { allow404: true }
+  );
+
+  if (response.status === 404) {
+    return null;
+  }
+
+  return response.data?.permission || null;
+}
+
+async function isIssueActionByMaintainer(context) {
+  const permission = await getRepositoryPermissionLevel(context, getIssueActorLogin(context.payload));
+  return ['admin', 'maintain', 'write', 'triage'].includes(permission);
+}
+
 function isPublishIssue(payload) {
   const issue = payload.issue;
   if (!issue) {
@@ -295,8 +323,11 @@ module.exports = {
   fetchBranch,
   fetchManifest,
   fetchRepository,
+  getIssueActorLogin,
   githubRequest,
+  getRepositoryPermissionLevel,
   isModerationIssue,
+  isIssueActionByMaintainer,
   isPublishIssue,
   isYesOption,
   loadContext,

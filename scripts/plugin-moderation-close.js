@@ -1,5 +1,7 @@
 // 脚本作用：在下架/举报 Issue 以 completed 关闭后，将目标插件状态更新为 delisted 并同步 README。
 const {
+  getIssueActorLogin,
+  isIssueActionByMaintainer,
   isModerationIssue,
   loadContext,
   parseIssueSections,
@@ -30,6 +32,11 @@ async function main() {
 
   if (issue.state_reason !== 'completed') {
     console.log(`当前关闭原因是 ${issue.state_reason || 'unknown'}，不执行状态修改。`);
+    return;
+  }
+
+  if (!(await isIssueActionByMaintainer(context))) {
+    console.log(`关闭 issue 的用户 ${getIssueActorLogin(context.payload) || 'unknown'} 不是仓库维护者，跳过状态修改。`);
     return;
   }
 
