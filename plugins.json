@@ -1,5 +1,45 @@
 [
   {
+    "id": "blue_archive-theme",
+    "name": "蔚蓝档案主题",
+    "description": "修改了 MoeKoe Music 的外观，并提供了可配置选项",
+    "iconUrl": "https://raw.githubusercontent.com/LateDreamXD/moekoe-blue_archive-theme/v0.2.0/assets/icon.png",
+    "version": "0.2.0",
+    "minversion": "1.6.2",
+    "status": "active",
+    "author": "LateDreamXD",
+    "repositoryUrl": "https://github.com/LateDreamXD/moekoe-blue_archive-theme",
+    "downloadUrl": "https://github.com/LateDreamXD/moekoe-blue_archive-theme/releases/download/v0.2.0/ba-theme-v0.2.0.zip",
+    "buildRequired": true,
+    "networkAccess": false,
+    "fileAccess": false,
+    "binaryContent": false,
+    "approvedAt": "2026-05-17T12:14:26.917Z",
+    "approvedIssueNumber": 53,
+    "approvedIssueUrl": "https://github.com/MoeKoeMusic/MoeKoeMusic-Plugins/issues/53",
+    "snapshot": {
+      "type": "release-asset",
+      "pluginId": "blue_archive-theme",
+      "iconPath": "assets/icon.png",
+      "iconUrl": "https://raw.githubusercontent.com/LateDreamXD/moekoe-blue_archive-theme/v0.2.0/assets/icon.png",
+      "version": "0.2.0",
+      "minversion": "1.6.2",
+      "repository": "LateDreamXD/moekoe-blue_archive-theme",
+      "repositoryUrl": "https://github.com/LateDreamXD/moekoe-blue_archive-theme",
+      "reviewRef": "v0.2.0",
+      "snapshotUrl": "https://github.com/LateDreamXD/moekoe-blue_archive-theme/tree/v0.2.0",
+      "downloadUrl": "https://github.com/LateDreamXD/moekoe-blue_archive-theme/releases/download/v0.2.0/ba-theme-v0.2.0.zip",
+      "release": {
+        "tag": "v0.2.0",
+        "name": "v0.2.0",
+        "publishedAt": "2026-05-17T10:49:54Z",
+        "assetName": "ba-theme-v0.2.0.zip",
+        "assetSize": 24124522,
+        "downloadUrl": "https://github.com/LateDreamXD/moekoe-blue_archive-theme/releases/download/v0.2.0/ba-theme-v0.2.0.zip"
+      }
+    }
+  },
+  {
     "id": "Small-Audio-Info",
     "name": "Small-Audio-Info",
     "description": "在你的播放bar的右方放一个显示音乐文件大小的东西",
