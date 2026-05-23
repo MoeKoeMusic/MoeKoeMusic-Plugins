@@ -48,7 +48,7 @@ async function buildReleaseSnapshot(context, repositoryRef, repository) {
       repository: repository.full_name,
       repositoryUrl: repository.html_url,
       reviewRef: release.tag_name,
-      snapshotUrl: asset.browser_download_url,
+      snapshotUrl: buildRepositorySnapshotUrl(repository.full_name, release.tag_name),
       downloadUrl: asset.browser_download_url,
       release: {
         tag: release.tag_name,
