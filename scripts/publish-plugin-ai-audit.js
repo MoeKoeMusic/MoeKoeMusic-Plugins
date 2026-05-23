@@ -113,6 +113,10 @@ function resolveArchiveFileName(snapshot, archiveUrl) {
     return snapshot.release.assetName;
   }
 
+  if (snapshot.type !== 'release-asset') {
+    return 'snapshot.zip';
+  }
+
   try {
     const parsed = new URL(archiveUrl);
     const name = parsed.pathname.split('/').pop();
