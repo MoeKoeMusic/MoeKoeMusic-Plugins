@@ -26,6 +26,9 @@ jobs:
         with:
           node-version: 20
 
+      - name: Install unzip
+        run: sudo apt-get update && sudo apt-get install -y unzip
+
       - name: Validate publish issue
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

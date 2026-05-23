@@ -205,10 +205,27 @@ async function fetchManifest(context, repositoryRef, branch, options = {}) {
   }
 
   try {
-    const content = JSON.parse(Buffer.from(response.data.content, 'base64').toString('utf8'));
-    const minversion = parseManifestMinVersion(content.minversion);
+    return parseManifestText(Buffer.from(response.data.content, 'base64').toString('utf8'), MANIFEST_FILE);
+  } catch (error) {
     return {
       path: MANIFEST_FILE,
+      content: null,
+      pluginId: '',
+      iconPath: '',
+      version: '',
+      minversion: '',
+      minversionInvalidType: false,
+      error: error.message,
+    };
+  }
+}
+
+function parseManifestText(text, manifestPath = MANIFEST_FILE) {
+  try {
+    const content = JSON.parse(String(text || ''));
+    const minversion = parseManifestMinVersion(content.minversion);
+    return {
+      path: manifestPath,
       content,
       pluginId: typeof content.plugin_id === 'string' ? content.plugin_id.trim() : '',
       iconPath: resolveManifestIconPath(content.icons),
@@ -219,7 +236,7 @@ async function fetchManifest(context, repositoryRef, branch, options = {}) {
     };
   } catch (error) {
     return {
-      path: MANIFEST_FILE,
+      path: manifestPath,
       content: null,
       pluginId: '',
       iconPath: '',
@@ -331,6 +348,7 @@ module.exports = {
   isPublishIssue,
   isYesOption,
   loadContext,
+  parseManifestText,
   parseChineseBoolean,
   parseIssueForm,
   parseIssueSections,

@@ -80,11 +80,11 @@ function hasAiAuditConfig() {
 
 async function prepareSnapshotWorkspace(snapshot) {
   const rootDir = fs.mkdtempSync(path.join(os.tmpdir(), 'plugin-ai-audit-'));
-  const archivePath = path.join(rootDir, 'snapshot.zip');
   const extractDir = path.join(rootDir, 'source');
   fs.mkdirSync(extractDir, { recursive: true });
 
   const archiveUrl = buildArchiveUrl(snapshot);
+  const archivePath = path.join(rootDir, resolveArchiveFileName(snapshot, archiveUrl));
   const response = await fetch(archiveUrl);
   if (!response.ok) {
     throw new Error(`下载仓库快照失败：${response.status} ${response.statusText}`);
@@ -93,17 +93,68 @@ async function prepareSnapshotWorkspace(snapshot) {
   const buffer = Buffer.from(await response.arrayBuffer());
   fs.writeFileSync(archivePath, buffer);
 
-  await execFileAsync('unzip', ['-q', archivePath, '-d', extractDir]);
+  await extractArchive(archivePath, extractDir);
 
-  const extractedEntries = fs.readdirSync(extractDir, { withFileTypes: true }).filter((entry) => entry.isDirectory());
-  const sourceDir = extractedEntries.length > 0 ? path.join(extractDir, extractedEntries[0].name) : extractDir;
+  const sourceDir = resolveExtractedSourceDir(extractDir);
 
   return { rootDir, sourceDir, archiveUrl };
 }
 
 function buildArchiveUrl(snapshot) {
-  const ref = snapshot.type === 'release-asset' ? snapshot.release.tag : snapshot.commitSha;
-  return `https://codeload.github.com/${snapshot.repository}/zip/${ref}`;
+  if (snapshot.type === 'release-asset') {
+    return snapshot.downloadUrl;
+  }
+
+  return `https://codeload.github.com/${snapshot.repository}/zip/${snapshot.commitSha}`;
+}
+
+function resolveArchiveFileName(snapshot, archiveUrl) {
+  if (snapshot.type === 'release-asset' && snapshot.release?.assetName) {
+    return snapshot.release.assetName;
+  }
+
+  try {
+    const parsed = new URL(archiveUrl);
+    const name = parsed.pathname.split('/').pop();
+    if (name) {
+      return name;
+    }
+  } catch {}
+
+  return 'snapshot.zip';
+}
+
+async function extractArchive(archivePath, extractDir) {
+  const lower = archivePath.toLowerCase();
+
+  if (lower.endsWith('.zip')) {
+    await execFileAsync('unzip', ['-q', archivePath, '-d', extractDir]);
+    return;
+  }
+
+  if (lower.endsWith('.tar.gz') || lower.endsWith('.tgz')) {
+    await execFileAsync('tar', ['-xzf', archivePath, '-C', extractDir]);
+    return;
+  }
+
+  if (lower.endsWith('.tar')) {
+    await execFileAsync('tar', ['-xf', archivePath, '-C', extractDir]);
+    return;
+  }
+
+  throw new Error(`Unsupported release asset format: ${path.basename(archivePath)}`);
+}
+
+function resolveExtractedSourceDir(extractDir) {
+  const extractedEntries = fs.readdirSync(extractDir, { withFileTypes: true });
+  const directories = extractedEntries.filter((entry) => entry.isDirectory());
+  const files = extractedEntries.filter((entry) => entry.isFile());
+
+  if (directories.length === 1 && files.length === 0) {
+    return path.join(extractDir, directories[0].name);
+  }
+
+  return extractDir;
 }
 
 async function collectAuditInput(workspace, repository, snapshot, formData) {

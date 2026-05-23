@@ -1,10 +1,11 @@
-// 脚本作用：解析并校验仓库 manifest，生成用于发布入库的快照信息。
+// 脚本作用：解析并校验插件快照，生成用于发布入库的快照信息。
 const {
   MANIFEST_FILE,
   fetchBranch,
   fetchLatestRelease,
   fetchManifest,
 } = require('./publish-plugin-common');
+const { cleanupDirectory, prepareArchiveWorkspace, readManifestFromDirectory } = require('./snapshot-archive');
 
 async function resolvePublishSnapshot(context, repositoryRef, repository, requiresBuild) {
   return requiresBuild
@@ -23,36 +24,44 @@ async function buildReleaseSnapshot(context, repositoryRef, repository) {
     return { error: '该插件需要编译，但当前 Release 没有可下载附件。' };
   }
 
-  const manifest = await fetchManifest(context, repositoryRef, release.tag_name, { allow404: true });
-  if (!manifest) {
-    return { error: `仓库在 tag \`${release.tag_name}\` 中未找到 ${MANIFEST_FILE}。` };
-  }
-  const manifestError = validateManifest(manifest);
-  if (manifestError) {
-    return { error: manifestError };
-  }
+  const workspace = await prepareArchiveWorkspace(asset.browser_download_url, { assetName: asset.name || '' });
+  try {
+    const manifest = readManifestFromDirectory(workspace.sourceDir);
+    if (!manifest) {
+      return { error: `发行附件中未找到 ${MANIFEST_FILE}。` };
+    }
 
-  return {
-    type: 'release-asset',
-    pluginId: manifest.pluginId,
-    iconPath: manifest.iconPath,
-    iconUrl: buildRawGitHubContentUrl(repository.full_name, release.tag_name, manifest.iconPath),
-    version: manifest.version,
-    minversion: manifest.minversion,
-    repository: repository.full_name,
-    repositoryUrl: repository.html_url,
-    reviewRef: release.tag_name,
-    snapshotUrl: buildRepositorySnapshotUrl(repository.full_name, release.tag_name),
-    downloadUrl: asset.browser_download_url,
-    release: {
-      tag: release.tag_name,
-      name: release.name || release.tag_name,
-      publishedAt: release.published_at || release.created_at || '',
-      assetName: asset.name || '',
-      assetSize: asset.size || 0,
+    const manifestError = validateManifest(manifest);
+    if (manifestError) {
+      return { error: manifestError };
+    }
+
+    const iconPath = prependPublicPath(manifest.iconPath);
+
+    return {
+      type: 'release-asset',
+      pluginId: manifest.pluginId,
+      iconPath,
+      iconUrl: buildRawGitHubContentUrl(repository.full_name, release.tag_name, iconPath),
+      version: manifest.version,
+      minversion: manifest.minversion,
+      repository: repository.full_name,
+      repositoryUrl: repository.html_url,
+      reviewRef: release.tag_name,
+      snapshotUrl: asset.browser_download_url,
       downloadUrl: asset.browser_download_url,
-    },
-  };
+      release: {
+        tag: release.tag_name,
+        name: release.name || release.tag_name,
+        publishedAt: release.published_at || release.created_at || '',
+        assetName: asset.name || '',
+        assetSize: asset.size || 0,
+        downloadUrl: asset.browser_download_url,
+      },
+    };
+  } finally {
+    cleanupDirectory(workspace.rootDir);
+  }
 }
 
 async function buildRepositorySnapshot(context, repositoryRef, repository) {
@@ -65,6 +74,7 @@ async function buildRepositorySnapshot(context, repositoryRef, repository) {
   if (!manifest) {
     return { error: `仓库当前快照中未找到 ${MANIFEST_FILE}。` };
   }
+
   const manifestError = validateManifest(manifest);
   if (manifestError) {
     return { error: manifestError };
@@ -97,12 +107,25 @@ function buildRepositoryArchiveUrl(repositoryFullName, ref) {
 }
 
 function buildRawGitHubContentUrl(repositoryFullName, ref, filePath) {
-  const normalizedPath = String(filePath || '').trim().replace(/^\/+/, '');
+  const normalizedPath = normalizePath(filePath);
   if (!normalizedPath) {
     return '';
   }
 
   return `https://raw.githubusercontent.com/${repositoryFullName}/${ref}/${normalizedPath}`;
+}
+
+function prependPublicPath(filePath) {
+  const normalizedPath = normalizePath(filePath);
+  if (!normalizedPath) {
+    return '';
+  }
+
+  return normalizedPath.startsWith('public/') ? normalizedPath : `public/${normalizedPath}`;
+}
+
+function normalizePath(filePath) {
+  return String(filePath || '').trim().replace(/^\.\/+/, '').replace(/^\/+/, '');
 }
 
 function validateManifest(manifest) {
