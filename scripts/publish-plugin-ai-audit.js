@@ -313,7 +313,7 @@ async function requestAiAudit(auditInput) {
   if (!rawContent) {
     throw new Error('AI 审核接口未返回有效内容。');
   }
-
+  console.warn(rawContent);
   return parseAiJsonResponse(rawContent);
 }
 
