@@ -1,5 +1,40 @@
 [
   {
+    "id": "audio-effect-plugin",
+    "name": "在线音效插件",
+    "description": "为播放器添加在线音效功能-音效- |钢琴 | 乐器 | 尤克里里 | 唢呐 | DJ | 伴奏 | - 其他设置-高潮模式（只播放原曲高潮部分）",
+    "iconUrl": "https://raw.githubusercontent.com/RTuioi/MoeKoeMusic-audio-effect-plugin/526f2aac7912d18242446d2e19f3ae03cd74f122/icon-48.png",
+    "version": "1.0.2",
+    "minversion": "1.6.0",
+    "status": "active",
+    "author": "RTuioi",
+    "repositoryUrl": "https://github.com/RTuioi/MoeKoeMusic-audio-effect-plugin",
+    "downloadUrl": "https://github.com/RTuioi/MoeKoeMusic-audio-effect-plugin/tree/526f2aac7912d18242446d2e19f3ae03cd74f122",
+    "buildRequired": false,
+    "networkAccess": false,
+    "fileAccess": false,
+    "binaryContent": false,
+    "approvedAt": "2026-06-06T09:04:20.920Z",
+    "approvedIssueNumber": 73,
+    "approvedIssueUrl": "https://github.com/MoeKoeMusic/MoeKoeMusic-Plugins/issues/73",
+    "snapshot": {
+      "type": "repository-tree",
+      "pluginId": "audio-effect-plugin",
+      "iconPath": "icon-48.png",
+      "iconUrl": "https://raw.githubusercontent.com/RTuioi/MoeKoeMusic-audio-effect-plugin/526f2aac7912d18242446d2e19f3ae03cd74f122/icon-48.png",
+      "version": "1.0.2",
+      "minversion": "1.6.0",
+      "repository": "RTuioi/MoeKoeMusic-audio-effect-plugin",
+      "repositoryUrl": "https://github.com/RTuioi/MoeKoeMusic-audio-effect-plugin",
+      "reviewRef": "526f2aac7912d18242446d2e19f3ae03cd74f122",
+      "snapshotUrl": "https://github.com/RTuioi/MoeKoeMusic-audio-effect-plugin/tree/526f2aac7912d18242446d2e19f3ae03cd74f122",
+      "branch": "main",
+      "commitSha": "526f2aac7912d18242446d2e19f3ae03cd74f122",
+      "downloadUrl": "https://github.com/RTuioi/MoeKoeMusic-audio-effect-plugin/tree/526f2aac7912d18242446d2e19f3ae03cd74f122",
+      "release": null
+    }
+  },
+  {
     "id": "moekoe-equalizer",
     "name": "MoeKoe EQ - 31段均衡器音效插件",
     "description": "MoeKoe EQ - 31 段参数 均衡器 扩展插件，提供 EQ 调节、音效增强 等功能",
@@ -141,41 +176,6 @@
         "assetSize": 24124728,
         "downloadUrl": "https://github.com/LateDreamXD/moekoe-blue_archive-theme/releases/download/v0.2.1/ba-theme-v0.2.1.zip"
       }
-    }
-  },
-  {
-    "id": "audio-effect-plugin",
-    "name": "在线音效插件",
-    "description": "为播放器添加在线音效功能-音效- |钢琴 | 乐器 | 尤克里里 | 唢呐 | DJ | 伴奏 | - 其他设置-高潮模式（只播放原曲高潮部分）",
-    "iconUrl": "https://raw.githubusercontent.com/RTuioi/MoeKoeMusic-audio-effect-plugin/2b20157ac4661a9a8aff9d6358551425e92cbe66/icon-48.png",
-    "version": "1.0.1",
-    "minversion": "1.6.0",
-    "status": "active",
-    "author": "RTuioi",
-    "repositoryUrl": "https://github.com/RTuioi/MoeKoeMusic-audio-effect-plugin",
-    "downloadUrl": "https://github.com/RTuioi/MoeKoeMusic-audio-effect-plugin/tree/2b20157ac4661a9a8aff9d6358551425e92cbe66",
-    "buildRequired": false,
-    "networkAccess": false,
-    "fileAccess": false,
-    "binaryContent": false,
-    "approvedAt": "2026-05-26T05:38:51.203Z",
-    "approvedIssueNumber": 62,
-    "approvedIssueUrl": "https://github.com/MoeKoeMusic/MoeKoeMusic-Plugins/issues/62",
-    "snapshot": {
-      "type": "repository-tree",
-      "pluginId": "audio-effect-plugin",
-      "iconPath": "icon-48.png",
-      "iconUrl": "https://raw.githubusercontent.com/RTuioi/MoeKoeMusic-audio-effect-plugin/2b20157ac4661a9a8aff9d6358551425e92cbe66/icon-48.png",
-      "version": "1.0.1",
-      "minversion": "1.6.0",
-      "repository": "RTuioi/MoeKoeMusic-audio-effect-plugin",
-      "repositoryUrl": "https://github.com/RTuioi/MoeKoeMusic-audio-effect-plugin",
-      "reviewRef": "2b20157ac4661a9a8aff9d6358551425e92cbe66",
-      "snapshotUrl": "https://github.com/RTuioi/MoeKoeMusic-audio-effect-plugin/tree/2b20157ac4661a9a8aff9d6358551425e92cbe66",
-      "branch": "main",
-      "commitSha": "2b20157ac4661a9a8aff9d6358551425e92cbe66",
-      "downloadUrl": "https://github.com/RTuioi/MoeKoeMusic-audio-effect-plugin/tree/2b20157ac4661a9a8aff9d6358551425e92cbe66",
-      "release": null
     }
   },
   {
