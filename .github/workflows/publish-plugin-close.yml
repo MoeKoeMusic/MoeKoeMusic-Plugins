@@ -38,7 +38,10 @@ jobs:
         uses: peter-evans/create-pull-request@v6
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          commit-message: "chore: register plugin from issue #${{ github.event.issue.number }}"
+          commit-message: |
+            chore: register plugin from issue #${{ github.event.issue.number }}
+
+            Co-authored-by: ${{ github.event.issue.user.login }} <${{ github.event.issue.user.id }}+${{ github.event.issue.user.login }}@users.noreply.github.com>
           branch: "bot/register-plugin-issue-${{ github.event.issue.number }}"
           delete-branch: true
           title: "chore: register plugin from issue #${{ github.event.issue.number }}"
@@ -50,8 +53,6 @@ jobs:
             - Updated files: `plugins.json`, `README.md`
 
             Merge this PR to publish the approved plugin into the market index.
-
-            Co-authored-by: ${{ github.event.issue.user.login }} <${{ github.event.issue.user.id }}+${{ github.event.issue.user.login }}@users.noreply.github.com>
           labels: |
             plugin
           add-paths: |
