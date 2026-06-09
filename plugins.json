@@ -1,5 +1,45 @@
 [
   {
+    "id": "Taskbar-Lyrics",
+    "name": "MoeKoeTaskbarLyrics",
+    "description": "为Windows端播放器提供任务栏（状态栏）歌词，位置可拖动，可播放下一首/上一首或暂停。\n\n<img width=\"826\" height=\"50\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/1673b88b-8225-4b03-a0e0-4cc49059538d\" />\n\n<img width=\"835\" height=\"47\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/f4fe3ebf-5de6-4284-b11d-a90c609a22d6\" />",
+    "iconUrl": "https://raw.githubusercontent.com/Yngu196/TaskbarLyrics/v0.3.1/public/icons/icon16.png",
+    "version": "0.3.1",
+    "minversion": "0.3.0",
+    "status": "active",
+    "author": "Yngu196",
+    "repositoryUrl": "https://github.com/Yngu196/TaskbarLyrics",
+    "downloadUrl": "https://github.com/Yngu196/TaskbarLyrics/releases/download/v0.3.1/moeKoe-taskbar-lyrics.zip",
+    "buildRequired": true,
+    "networkAccess": false,
+    "fileAccess": true,
+    "binaryContent": true,
+    "approvedAt": "2026-06-09T03:28:01.413Z",
+    "approvedIssueNumber": 77,
+    "approvedIssueUrl": "https://github.com/MoeKoeMusic/MoeKoeMusic-Plugins/issues/77",
+    "snapshot": {
+      "type": "release-asset",
+      "pluginId": "Taskbar-Lyrics",
+      "iconPath": "public/icons/icon16.png",
+      "iconUrl": "https://raw.githubusercontent.com/Yngu196/TaskbarLyrics/v0.3.1/public/icons/icon16.png",
+      "version": "0.3.1",
+      "minversion": "0.3.0",
+      "repository": "Yngu196/TaskbarLyrics",
+      "repositoryUrl": "https://github.com/Yngu196/TaskbarLyrics",
+      "reviewRef": "v0.3.1",
+      "snapshotUrl": "https://github.com/Yngu196/TaskbarLyrics/tree/v0.3.1",
+      "downloadUrl": "https://github.com/Yngu196/TaskbarLyrics/releases/download/v0.3.1/moeKoe-taskbar-lyrics.zip",
+      "release": {
+        "tag": "v0.3.1",
+        "name": "v0.3.1",
+        "publishedAt": "2026-06-08T13:06:22Z",
+        "assetName": "moeKoe-taskbar-lyrics.zip",
+        "assetSize": 705899,
+        "downloadUrl": "https://github.com/Yngu196/TaskbarLyrics/releases/download/v0.3.1/moeKoe-taskbar-lyrics.zip"
+      }
+    }
+  },
+  {
     "id": "audio-effect-plugin",
     "name": "在线音效插件",
     "description": "为播放器添加在线音效功能-音效- |钢琴 | 乐器 | 尤克里里 | 唢呐 | DJ | 伴奏 | - 其他设置-高潮模式（只播放原曲高潮部分）",
