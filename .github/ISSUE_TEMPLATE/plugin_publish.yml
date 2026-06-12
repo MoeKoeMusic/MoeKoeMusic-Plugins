@@ -24,24 +24,6 @@ body:
       required: true
 
   - type: input
-    id: plugin_name
-    attributes:
-      label: 插件名称
-      description: 用于在市场中展示的名称
-      placeholder: 例如：歌词增强器
-    validations:
-      required: true
-
-  - type: textarea
-    id: plugin_description
-    attributes:
-      label: 插件描述
-      description: 简要说明插件作用
-      placeholder: 例如：为播放器增加歌词翻译、滚动定位和样式增强功能。
-    validations:
-      required: true
-
-  - type: input
     id: repository_url
     attributes:
       label: GitHub 仓库地址

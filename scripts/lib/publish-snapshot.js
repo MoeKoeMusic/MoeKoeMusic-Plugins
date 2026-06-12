@@ -41,6 +41,8 @@ async function buildReleaseSnapshot(context, repositoryRef, repository) {
     return {
       type: 'release-asset',
       pluginId: manifest.pluginId,
+      pluginName: manifest.name,
+      pluginDescription: manifest.description,
       iconPath,
       iconUrl: buildRawGitHubContentUrl(repository.full_name, release.tag_name, iconPath),
       version: manifest.version,
@@ -83,6 +85,8 @@ async function buildRepositorySnapshot(context, repositoryRef, repository) {
   return {
     type: 'repository-tree',
     pluginId: manifest.pluginId,
+    pluginName: manifest.name,
+    pluginDescription: manifest.description,
     iconPath: manifest.iconPath,
     iconUrl: buildRawGitHubContentUrl(repository.full_name, branch.commit.sha, manifest.iconPath),
     version: manifest.version,
@@ -137,6 +141,15 @@ function validateManifest(manifest) {
   }
   if (!isValidPluginId(manifest.pluginId)) {
     return `${MANIFEST_FILE} 中的 plugin_id 格式无效：\`${manifest.pluginId}\`。`;
+  }
+  if (!manifest.name) {
+    return `${MANIFEST_FILE} 缺少 name 字段。`;
+  }
+  if (!manifest.description) {
+    return `${MANIFEST_FILE} 缺少 description 字段。`;
+  }
+  if (manifest.description.length < 5) {
+    return `${MANIFEST_FILE} 中的 description 过短，请至少提供更清晰真实的功能说明。`;
   }
   if (!manifest.version) {
     return `${MANIFEST_FILE} 缺少 version 字段。`;

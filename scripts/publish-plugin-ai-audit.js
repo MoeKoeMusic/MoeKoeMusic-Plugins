@@ -171,7 +171,7 @@ async function collectAuditInput(workspace, repository, snapshot, formData) {
     repositoryUrl: repository.html_url,
     operationType: formData.operationType,
     pluginId: snapshot.pluginId,
-    pluginName: formData.pluginName,
+    pluginName: snapshot.pluginName,
     buildRequired: isYesOption(formData.buildRequired),
     snapshot,
     archiveUrl: workspace.archiveUrl,

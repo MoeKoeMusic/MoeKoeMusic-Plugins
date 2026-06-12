@@ -19,8 +19,6 @@ const SNAPSHOT_MARKER_SUFFIX = ' -->';
 const STATUS_LABELS = ['check-passed', 'check-failed'];
 const REQUIRED_FIELDS = [
   ['操作类型', 'operationType'],
-  ['插件名称', 'pluginName'],
-  ['插件描述', 'pluginDescription'],
   ['GitHub 仓库地址', 'repositoryUrl'],
   ['安装前是否需要编译', 'buildRequired'],
   ['是否包含网络请求', 'networkAccess'],
@@ -74,8 +72,8 @@ function createResult(issue, formData) {
       operationType: formData.operationType || '',
       plugin: {
         id: '',
-        name: formData.pluginName || '',
-        description: formData.pluginDescription || '',
+        name: '',
+        description: '',
         repositoryUrl: formData.repositoryUrl || '',
         buildRequired: isYesOption(formData.buildRequired),
         networkAccess: toBoolean(formData.networkAccess),
@@ -96,10 +94,6 @@ function validateFormFields(formData, result) {
 
   if (!['新上架', '更新插件'].includes(formData.operationType)) {
     result.failures.push('操作类型无效，只允许“新上架”或“更新插件”。');
-  }
-
-  if (formData.pluginDescription && formData.pluginDescription.length < 10) {
-    result.failures.push('插件描述过短，请至少提供更清晰的功能说明。');
   }
 
   const confirmationCount = (formData.confirmations.match(/- \[x\]/gi) || []).length;
@@ -138,6 +132,8 @@ async function validateOperation(context, issue, formData, result) {
 
   result.snapshot = snapshot;
   result.payload.plugin.id = snapshot.pluginId;
+  result.payload.plugin.name = snapshot.pluginName;
+  result.payload.plugin.description = snapshot.pluginDescription;
   result.payload.snapshot = snapshot;
 
   const existingPlugin = findPluginById(snapshot.pluginId);
