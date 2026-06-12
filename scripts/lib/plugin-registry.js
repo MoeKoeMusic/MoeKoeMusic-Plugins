@@ -86,17 +86,15 @@ function buildPluginTable(plugins) {
 
 function toPluginTableRow(plugin) {
   const iconCell = buildPluginIconCell(plugin);
-  const cells = [
-    plugin.id,
-    plugin.name || plugin.id,
-    plugin.description || '-',
-    plugin.version || '-',
-    formatPluginStatus(plugin.status),
-    plugin.author || '-',
-  ].map(escapeMarkdownCell);
+  const idCell = buildMarkdownLink(plugin.id, plugin.approvedIssueUrl);
+  const nameCell = buildMarkdownLink(plugin.name || plugin.id, plugin.repositoryUrl);
+  const descriptionCell = escapeMarkdownCell(plugin.description || '-');
+  const versionCell = escapeMarkdownCell(plugin.version || '-');
+  const statusCell = escapeMarkdownCell(formatPluginStatus(plugin.status));
+  const authorCell = buildMarkdownLink(plugin.author || '-', plugin.author ? `https://github.com/${plugin.author}` : '');
 
   const downloadLink = plugin.downloadUrl ? `[下载](${plugin.downloadUrl})` : '-';
-  return `| ${iconCell} | ${cells[0]} | ${cells[1]} | ${cells[2]} | ${cells[3]} | ${cells[4]} | ${cells[5]} | ${downloadLink} |`;
+  return `| ${iconCell} | ${idCell} | ${nameCell} | ${descriptionCell} | ${versionCell} | ${statusCell} | ${authorCell} | ${downloadLink} |`;
 }
 
 function buildPluginIconCell(plugin) {
@@ -135,6 +133,11 @@ function formatPluginStatus(status) {
 
 function escapeMarkdownCell(value) {
   return String(value || '-').replace(/\|/g, '\\|').replace(/\n/g, '<br>');
+}
+
+function buildMarkdownLink(label, url) {
+  const text = escapeMarkdownCell(label);
+  return url ? `[${text}](${url})` : text;
 }
 
 function escapeHtmlAttribute(value) {
