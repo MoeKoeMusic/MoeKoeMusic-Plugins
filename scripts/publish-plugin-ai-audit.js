@@ -284,7 +284,7 @@ async function requestAiAudit(auditInput) {
       {
         role: 'system',
         content:
-          'You are a security-focused code reviewer. The target is a plugin for the MoeKoe Music Electron application. Perform a minimal static audit of the provided plugin snapshot. Check for malicious behavior, risky patterns, and obvious bugs. Do not report content_scripts matching all URLs as a finding. Return strict JSON only.',
+          'You are a security-focused code reviewer. The target is a plugin for the MoeKoe Music Electron application. Perform a minimal static audit of the provided plugin snapshot. Check for malicious behavior, risky patterns, and obvious bugs. Do not report content_scripts matching all URLs as a finding. Return strict JSON only. All JSON string values must be written in Simplified Chinese.',
       },
       {
         role: 'user',
