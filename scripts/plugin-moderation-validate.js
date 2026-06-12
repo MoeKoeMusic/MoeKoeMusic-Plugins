@@ -13,7 +13,6 @@ const COMMENT_MARKER = '<!-- plugin-moderation-validation -->';
 const STATUS_LABELS = ['check-passed', 'check-failed'];
 const FIELD_TITLES = {
   requestType: '处理类型',
-  pluginName: '插件名称',
   pluginId: '插件唯一 ID',
   repositoryUrl: '插件仓库或市场页面链接',
   requestReason: '原因分类',
@@ -88,10 +87,6 @@ function validateRequiredFields(formData, result) {
 }
 
 function validatePluginMatch(plugin, formData, issue, result) {
-  if (formData.pluginName && plugin.name && plugin.name !== formData.pluginName) {
-    result.notices.push(`Issue 中的插件名称是 \`${formData.pluginName}\`，索引中的名称是 \`${plugin.name}\`。`);
-  }
-
   if (formData.repositoryUrl && plugin.repositoryUrl && plugin.repositoryUrl !== formData.repositoryUrl) {
     result.notices.push('Issue 中的插件链接与索引记录不一致，请人工确认。');
   }
@@ -118,7 +113,7 @@ function buildCommentBody(issue, result) {
     '',
     `- 当前状态：\`${result.status}\``,
     `- 处理类型：${result.extracted.requestType || '未解析到'}`,
-    `- 插件名称：${result.extracted.pluginName || '未解析到'}`,
+    `- 插件名称：${result.plugin?.name || '未识别'}`,
     `- 插件 ID：${result.extracted.pluginId || '未解析到'}`,
     `- 提交用户：${issue.user?.login || '未知'}`,
     '',

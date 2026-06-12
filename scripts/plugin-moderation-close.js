@@ -10,7 +10,6 @@ const { findPluginById, updatePluginStatus, updateReadmePluginList } = require('
 
 const FIELD_TITLES = {
   requestType: '处理类型',
-  pluginName: '插件名称',
   pluginId: '插件唯一 ID',
   repositoryUrl: '插件仓库或市场页面链接',
   requestReason: '原因分类',
@@ -71,7 +70,6 @@ function normalizeFieldValue(value) {
 function validateRequiredFields(formData) {
   const requiredFields = [
     ['处理类型', formData.requestType],
-    ['插件名称', formData.pluginName],
     ['插件唯一 ID', formData.pluginId],
     ['插件仓库或市场页面链接', formData.repositoryUrl],
     ['原因分类', formData.requestReason],
