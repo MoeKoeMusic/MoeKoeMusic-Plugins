@@ -97,7 +97,7 @@ async function buildRepositorySnapshot(context, repositoryRef, repository) {
     snapshotUrl: buildRepositorySnapshotUrl(repository.full_name, branch.commit.sha),
     branch: repository.default_branch,
     commitSha: branch.commit.sha,
-    downloadUrl: buildRepositorySnapshotUrl(repository.full_name, branch.commit.sha),
+    downloadUrl: buildRepositoryArchiveUrl(repository.full_name, branch.commit.sha),
     release: null,
   };
 }
@@ -107,7 +107,7 @@ function buildRepositorySnapshotUrl(repositoryFullName, ref) {
 }
 
 function buildRepositoryArchiveUrl(repositoryFullName, ref) {
-  return `https://codeload.github.com/${repositoryFullName}/zip/${ref}`;
+  return `https://github.com/${repositoryFullName}/archive/${ref}.zip`;
 }
 
 function buildRawGitHubContentUrl(repositoryFullName, ref, filePath) {

@@ -49,7 +49,7 @@
     "status": "active",
     "author": "RTuioi",
     "repositoryUrl": "https://github.com/RTuioi/MoeKoeMusic-audio-effect-plugin",
-    "downloadUrl": "https://github.com/RTuioi/MoeKoeMusic-audio-effect-plugin/tree/526f2aac7912d18242446d2e19f3ae03cd74f122",
+    "downloadUrl": "https://github.com/RTuioi/MoeKoeMusic-audio-effect-plugin/archive/526f2aac7912d18242446d2e19f3ae03cd74f122.zip",
     "buildRequired": false,
     "networkAccess": false,
     "fileAccess": false,
@@ -70,7 +70,7 @@
       "snapshotUrl": "https://github.com/RTuioi/MoeKoeMusic-audio-effect-plugin/tree/526f2aac7912d18242446d2e19f3ae03cd74f122",
       "branch": "main",
       "commitSha": "526f2aac7912d18242446d2e19f3ae03cd74f122",
-      "downloadUrl": "https://github.com/RTuioi/MoeKoeMusic-audio-effect-plugin/tree/526f2aac7912d18242446d2e19f3ae03cd74f122",
+      "downloadUrl": "https://github.com/RTuioi/MoeKoeMusic-audio-effect-plugin/archive/526f2aac7912d18242446d2e19f3ae03cd74f122.zip",
       "release": null
     }
   },
@@ -84,7 +84,7 @@
     "status": "active",
     "author": "RTuioi",
     "repositoryUrl": "https://github.com/RTuioi/MoeKoe-EQ-Plugin",
-    "downloadUrl": "https://github.com/RTuioi/MoeKoe-EQ-Plugin/tree/e0e56e30f387c6688efee2621b311c4cdc2317c4",
+    "downloadUrl": "https://github.com/RTuioi/MoeKoe-EQ-Plugin/archive/e0e56e30f387c6688efee2621b311c4cdc2317c4.zip",
     "buildRequired": false,
     "networkAccess": false,
     "fileAccess": false,
@@ -105,7 +105,7 @@
       "snapshotUrl": "https://github.com/RTuioi/MoeKoe-EQ-Plugin/tree/e0e56e30f387c6688efee2621b311c4cdc2317c4",
       "branch": "main",
       "commitSha": "e0e56e30f387c6688efee2621b311c4cdc2317c4",
-      "downloadUrl": "https://github.com/RTuioi/MoeKoe-EQ-Plugin/tree/e0e56e30f387c6688efee2621b311c4cdc2317c4",
+      "downloadUrl": "https://github.com/RTuioi/MoeKoe-EQ-Plugin/archive/e0e56e30f387c6688efee2621b311c4cdc2317c4.zip",
       "release": null
     }
   },
@@ -118,7 +118,7 @@
     "status": "active",
     "author": "BB-CHICKEN",
     "repositoryUrl": "https://github.com/BB-CHICKEN/MoeKoe-Music-Total-Play-Time",
-    "downloadUrl": "https://github.com/BB-CHICKEN/MoeKoe-Music-Total-Play-Time/tree/8e41f87403fbf7db49626a8d3b5548d56ce28bd3",
+    "downloadUrl": "https://github.com/BB-CHICKEN/MoeKoe-Music-Total-Play-Time/archive/8e41f87403fbf7db49626a8d3b5548d56ce28bd3.zip",
     "buildRequired": false,
     "networkAccess": true,
     "fileAccess": false,
@@ -139,7 +139,7 @@
       "snapshotUrl": "https://github.com/BB-CHICKEN/MoeKoe-Music-Total-Play-Time/tree/8e41f87403fbf7db49626a8d3b5548d56ce28bd3",
       "branch": "main",
       "commitSha": "8e41f87403fbf7db49626a8d3b5548d56ce28bd3",
-      "downloadUrl": "https://github.com/BB-CHICKEN/MoeKoe-Music-Total-Play-Time/tree/8e41f87403fbf7db49626a8d3b5548d56ce28bd3",
+      "downloadUrl": "https://github.com/BB-CHICKEN/MoeKoe-Music-Total-Play-Time/archive/8e41f87403fbf7db49626a8d3b5548d56ce28bd3.zip",
       "release": null
     }
   },
@@ -153,7 +153,7 @@
     "status": "active",
     "author": "iAJue",
     "repositoryUrl": "https://github.com/MoeKoeMusic/moekoe-comments-panel",
-    "downloadUrl": "https://github.com/MoeKoeMusic/moekoe-comments-panel/tree/f5491f98d451d27d4974a84f5a38ff8e1fe4a314",
+    "downloadUrl": "https://github.com/MoeKoeMusic/moekoe-comments-panel/archive/f5491f98d451d27d4974a84f5a38ff8e1fe4a314.zip",
     "buildRequired": false,
     "networkAccess": false,
     "fileAccess": false,
@@ -174,7 +174,7 @@
       "snapshotUrl": "https://github.com/MoeKoeMusic/moekoe-comments-panel/tree/f5491f98d451d27d4974a84f5a38ff8e1fe4a314",
       "branch": "main",
       "commitSha": "f5491f98d451d27d4974a84f5a38ff8e1fe4a314",
-      "downloadUrl": "https://github.com/MoeKoeMusic/moekoe-comments-panel/tree/f5491f98d451d27d4974a84f5a38ff8e1fe4a314",
+      "downloadUrl": "https://github.com/MoeKoeMusic/moekoe-comments-panel/archive/f5491f98d451d27d4974a84f5a38ff8e1fe4a314.zip",
       "release": null
     }
   },
@@ -228,7 +228,7 @@
     "status": "active",
     "author": "iAJue",
     "repositoryUrl": "https://github.com/MoeKoeMusic/custom-background",
-    "downloadUrl": "https://github.com/MoeKoeMusic/custom-background/tree/b33565501f855b56bcb2b8dba034e6eaa4bda3d5",
+    "downloadUrl": "https://github.com/MoeKoeMusic/custom-background/archive/b33565501f855b56bcb2b8dba034e6eaa4bda3d5.zip",
     "buildRequired": false,
     "networkAccess": false,
     "fileAccess": false,
@@ -249,7 +249,7 @@
       "snapshotUrl": "https://github.com/MoeKoeMusic/custom-background/tree/b33565501f855b56bcb2b8dba034e6eaa4bda3d5",
       "branch": "main",
       "commitSha": "b33565501f855b56bcb2b8dba034e6eaa4bda3d5",
-      "downloadUrl": "https://github.com/MoeKoeMusic/custom-background/tree/b33565501f855b56bcb2b8dba034e6eaa4bda3d5",
+      "downloadUrl": "https://github.com/MoeKoeMusic/custom-background/archive/b33565501f855b56bcb2b8dba034e6eaa4bda3d5.zip",
       "release": null
     }
   },
@@ -262,7 +262,7 @@
     "status": "active",
     "author": "BB-CHICKEN",
     "repositoryUrl": "https://github.com/BB-CHICKEN/Small-Audio-Info",
-    "downloadUrl": "https://github.com/BB-CHICKEN/Small-Audio-Info/tree/ce717bc0023ff07d761aa984af571d250f38da9a",
+    "downloadUrl": "https://github.com/BB-CHICKEN/Small-Audio-Info/archive/ce717bc0023ff07d761aa984af571d250f38da9a.zip",
     "buildRequired": false,
     "networkAccess": true,
     "fileAccess": false,
@@ -283,7 +283,7 @@
       "snapshotUrl": "https://github.com/BB-CHICKEN/Small-Audio-Info/tree/ce717bc0023ff07d761aa984af571d250f38da9a",
       "branch": "main",
       "commitSha": "ce717bc0023ff07d761aa984af571d250f38da9a",
-      "downloadUrl": "https://github.com/BB-CHICKEN/Small-Audio-Info/tree/ce717bc0023ff07d761aa984af571d250f38da9a",
+      "downloadUrl": "https://github.com/BB-CHICKEN/Small-Audio-Info/archive/ce717bc0023ff07d761aa984af571d250f38da9a.zip",
       "release": null
     }
   },
@@ -297,7 +297,7 @@
     "status": "active",
     "author": "iAJue",
     "repositoryUrl": "https://github.com/MoeKoeMusic/apple-music-theme",
-    "downloadUrl": "https://github.com/MoeKoeMusic/apple-music-theme/tree/12f3e174f90957ca5468a6ad0e6793a280b843ab",
+    "downloadUrl": "https://github.com/MoeKoeMusic/apple-music-theme/archive/12f3e174f90957ca5468a6ad0e6793a280b843ab.zip",
     "buildRequired": false,
     "networkAccess": false,
     "fileAccess": false,
@@ -318,7 +318,7 @@
       "snapshotUrl": "https://github.com/MoeKoeMusic/apple-music-theme/tree/12f3e174f90957ca5468a6ad0e6793a280b843ab",
       "branch": "main",
       "commitSha": "12f3e174f90957ca5468a6ad0e6793a280b843ab",
-      "downloadUrl": "https://github.com/MoeKoeMusic/apple-music-theme/tree/12f3e174f90957ca5468a6ad0e6793a280b843ab",
+      "downloadUrl": "https://github.com/MoeKoeMusic/apple-music-theme/archive/12f3e174f90957ca5468a6ad0e6793a280b843ab.zip",
       "release": null
     }
   },
@@ -331,7 +331,7 @@
     "status": "active",
     "author": "Elysium1314",
     "repositoryUrl": "https://github.com/Elysium1314/MoeKoe-Music-Disable-Single-Song-Display",
-    "downloadUrl": "https://github.com/Elysium1314/MoeKoe-Music-Disable-Single-Song-Display/tree/5bbb8996f468dbff3593e36d19e6593b012274f7",
+    "downloadUrl": "https://github.com/Elysium1314/MoeKoe-Music-Disable-Single-Song-Display/archive/5bbb8996f468dbff3593e36d19e6593b012274f7.zip",
     "buildRequired": false,
     "networkAccess": false,
     "fileAccess": false,
@@ -352,7 +352,7 @@
       "snapshotUrl": "https://github.com/Elysium1314/MoeKoe-Music-Disable-Single-Song-Display/tree/5bbb8996f468dbff3593e36d19e6593b012274f7",
       "branch": "main",
       "commitSha": "5bbb8996f468dbff3593e36d19e6593b012274f7",
-      "downloadUrl": "https://github.com/Elysium1314/MoeKoe-Music-Disable-Single-Song-Display/tree/5bbb8996f468dbff3593e36d19e6593b012274f7",
+      "downloadUrl": "https://github.com/Elysium1314/MoeKoe-Music-Disable-Single-Song-Display/archive/5bbb8996f468dbff3593e36d19e6593b012274f7.zip",
       "release": null
     }
   },
@@ -366,7 +366,7 @@
     "status": "active",
     "author": "zc217888",
     "repositoryUrl": "https://github.com/zc217888/moekoe-lyrics-extractor",
-    "downloadUrl": "https://github.com/zc217888/moekoe-lyrics-extractor/tree/6d515519e481408673651605827a22ed2f93469e",
+    "downloadUrl": "https://github.com/zc217888/moekoe-lyrics-extractor/archive/6d515519e481408673651605827a22ed2f93469e.zip",
     "buildRequired": false,
     "networkAccess": false,
     "fileAccess": true,
@@ -387,7 +387,7 @@
       "snapshotUrl": "https://github.com/zc217888/moekoe-lyrics-extractor/tree/6d515519e481408673651605827a22ed2f93469e",
       "branch": "main",
       "commitSha": "6d515519e481408673651605827a22ed2f93469e",
-      "downloadUrl": "https://github.com/zc217888/moekoe-lyrics-extractor/tree/6d515519e481408673651605827a22ed2f93469e",
+      "downloadUrl": "https://github.com/zc217888/moekoe-lyrics-extractor/archive/6d515519e481408673651605827a22ed2f93469e.zip",
       "release": null
     }
   },
@@ -400,7 +400,7 @@
     "status": "active",
     "author": "chenyang137",
     "repositoryUrl": "https://github.com/chenyang137/MoeKoeMusic-artist-plugin",
-    "downloadUrl": "https://github.com/chenyang137/MoeKoeMusic-artist-plugin/tree/aeb8e51cd531306d6275be226844880a0ed0f452",
+    "downloadUrl": "https://github.com/chenyang137/MoeKoeMusic-artist-plugin/archive/aeb8e51cd531306d6275be226844880a0ed0f452.zip",
     "buildRequired": false,
     "networkAccess": true,
     "fileAccess": false,
@@ -421,7 +421,7 @@
       "snapshotUrl": "https://github.com/chenyang137/MoeKoeMusic-artist-plugin/tree/aeb8e51cd531306d6275be226844880a0ed0f452",
       "branch": "main",
       "commitSha": "aeb8e51cd531306d6275be226844880a0ed0f452",
-      "downloadUrl": "https://github.com/chenyang137/MoeKoeMusic-artist-plugin/tree/aeb8e51cd531306d6275be226844880a0ed0f452",
+      "downloadUrl": "https://github.com/chenyang137/MoeKoeMusic-artist-plugin/archive/aeb8e51cd531306d6275be226844880a0ed0f452.zip",
       "release": null
     }
   },
@@ -435,7 +435,7 @@
     "status": "active",
     "author": "iAJue",
     "repositoryUrl": "https://github.com/MoeKoeMusic/custom-app-background-plugin",
-    "downloadUrl": "https://github.com/MoeKoeMusic/custom-app-background-plugin/tree/dbf72d38c8cf6b1d1cefdf8ce15798d565678995",
+    "downloadUrl": "https://github.com/MoeKoeMusic/custom-app-background-plugin/archive/dbf72d38c8cf6b1d1cefdf8ce15798d565678995.zip",
     "buildRequired": false,
     "networkAccess": false,
     "fileAccess": false,
@@ -456,7 +456,7 @@
       "snapshotUrl": "https://github.com/MoeKoeMusic/custom-app-background-plugin/tree/dbf72d38c8cf6b1d1cefdf8ce15798d565678995",
       "branch": "main",
       "commitSha": "dbf72d38c8cf6b1d1cefdf8ce15798d565678995",
-      "downloadUrl": "https://github.com/MoeKoeMusic/custom-app-background-plugin/tree/dbf72d38c8cf6b1d1cefdf8ce15798d565678995",
+      "downloadUrl": "https://github.com/MoeKoeMusic/custom-app-background-plugin/archive/dbf72d38c8cf6b1d1cefdf8ce15798d565678995.zip",
       "release": null
     }
   }

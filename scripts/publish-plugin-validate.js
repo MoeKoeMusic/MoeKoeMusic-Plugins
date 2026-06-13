@@ -225,7 +225,8 @@ function buildSnapshotFacts(snapshot) {
 
   const facts = [
     `版本：${snapshot.version}`,
-    `快照地址：${snapshot.downloadUrl}`,
+    `仓库快照：${snapshot.snapshotUrl || '-'}`,
+    `下载地址：${snapshot.downloadUrl}`,
   ];
 
   if (snapshot.type === 'release-asset') {

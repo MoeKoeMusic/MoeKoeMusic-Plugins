@@ -14,7 +14,7 @@ const {
   parseIssueForm,
   parseRepositoryReference,
 } = require('./lib/publish-plugin-common');
-const { resolvePublishSnapshot } = require('./lib/publish-snapshot');
+const { buildRepositoryArchiveUrl, resolvePublishSnapshot } = require('./lib/publish-snapshot');
 
 const execFileAsync = promisify(execFile);
 const COMMENT_MARKER = '<!-- plugin-publish-ai-audit -->';
@@ -105,7 +105,12 @@ function buildArchiveUrl(snapshot) {
     return snapshot.downloadUrl;
   }
 
-  return `https://codeload.github.com/${snapshot.repository}/zip/${snapshot.commitSha}`;
+  const ref = snapshot.commitSha || snapshot.reviewRef;
+  if (snapshot.repository && ref) {
+    return buildRepositoryArchiveUrl(snapshot.repository, ref);
+  }
+
+  return snapshot.downloadUrl;
 }
 
 function resolveArchiveFileName(snapshot, archiveUrl) {
