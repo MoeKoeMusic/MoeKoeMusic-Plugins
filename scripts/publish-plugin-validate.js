@@ -136,7 +136,7 @@ async function validateOperation(context, issue, formData, result) {
   result.payload.plugin.fileAccess = snapshot.permissions?.fileAccess === true;
   result.payload.plugin.binaryContent = snapshot.permissions?.binaryContent === true;
   result.payload.plugin.storageAccess = snapshot.permissions?.storageAccess === true;
-  result.payload.snapshot = snapshot;
+  result.payload.snapshot = buildPayloadSnapshot(snapshot);
 
   const existingPlugin = findPluginById(snapshot.pluginId);
   if (formData.operationType === '新上架' && existingPlugin) {
@@ -211,6 +211,15 @@ function buildHiddenSnapshotPayload(payload) {
   return `${SNAPSHOT_MARKER_PREFIX}${encoded}${SNAPSHOT_MARKER_SUFFIX}`;
 }
 
+function buildPayloadSnapshot(snapshot) {
+  if (!snapshot || typeof snapshot !== 'object') {
+    return snapshot;
+  }
+
+  const { permissions, ...payloadSnapshot } = snapshot;
+  return payloadSnapshot;
+}
+
 function buildSnapshotFacts(snapshot) {
   if (!snapshot) {
     return [];
@@ -241,30 +250,50 @@ function buildPermissionFacts(permissions) {
   }
 
   return [
-    `网络访问：${formatBoolean(permissions.networkAccess)}`,
-    `本地文件读写：${formatBoolean(permissions.fileAccess)}`,
-    `可执行二进制：${formatBoolean(permissions.binaryContent)}`,
-    `存储权限：${formatBoolean(permissions.storageAccess)}`,
-    ...formatPermissionEvidence(permissions.evidence),
+    formatPermissionFact('网络访问', 'networkAccess', permissions),
+    formatPermissionFact('本地文件读写', 'fileAccess', permissions),
+    formatPermissionFact('可执行二进制', 'binaryContent', permissions),
+    formatPermissionFact('存储权限', 'storageAccess', permissions),
   ];
 }
 
-function formatPermissionEvidence(evidence) {
-  if (!evidence || typeof evidence !== 'object') {
-    return [];
+function formatPermissionFact(label, key, permissions) {
+  const source = permissions[key] === true ? formatPermissionSource(permissions.evidence?.[key]) : '';
+  return `${label}：${formatBoolean(permissions[key])}${source}`;
+}
+
+function formatPermissionSource(items) {
+  const sources = Array.isArray(items) ? items.map(simplifyPermissionEvidence).filter(Boolean) : [];
+  const uniqueSources = [...new Set(sources)];
+
+  if (uniqueSources.length === 0) {
+    return '';
   }
 
-  const labels = {
-    networkAccess: '网络访问依据',
-    fileAccess: '本地文件读写依据',
-    binaryContent: '可执行二进制依据',
-    storageAccess: '存储权限依据',
-  };
+  return ` (${uniqueSources.slice(0, 3).join(', ')})`;
+}
 
-  return Object.entries(labels).flatMap(([key, label]) => {
-    const items = Array.isArray(evidence[key]) ? evidence[key] : [];
-    return items.map((item) => `${label}：${item}`);
-  });
+function simplifyPermissionEvidence(item) {
+  const text = String(item || '').trim();
+  if (!text) {
+    return '';
+  }
+
+  if (text.includes('moekoe:nativeHost')) {
+    return 'moekoe:nativeHost';
+  }
+  if (text.includes('manifest 声明 storage')) {
+    return 'storage';
+  }
+  if (text.includes('网络/站点访问权限')) {
+    return 'host_permissions';
+  }
+  if (text.includes('文件相关权限')) {
+    return 'manifest';
+  }
+
+  const source = text.includes('：') ? text.split('：').pop() : text;
+  return source.split(/[\\/]/).pop() || source;
 }
 
 function formatBoolean(value) {
