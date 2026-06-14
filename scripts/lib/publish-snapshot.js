@@ -5,6 +5,7 @@ const {
   fetchLatestRelease,
   fetchManifest,
 } = require('./publish-plugin-common');
+const { analyzePluginPermissions } = require('./plugin-permissions');
 const { cleanupDirectory, prepareArchiveWorkspace, readManifestFromDirectory } = require('./snapshot-archive');
 
 async function resolvePublishSnapshot(context, repositoryRef, repository, requiresBuild) {
@@ -37,6 +38,7 @@ async function buildReleaseSnapshot(context, repositoryRef, repository) {
     }
 
     const iconPath = prependPublicPath(manifest.iconPath);
+    const permissions = analyzePluginPermissions(workspace.sourceDir, manifest);
 
     return {
       type: 'release-asset',
@@ -52,6 +54,7 @@ async function buildReleaseSnapshot(context, repositoryRef, repository) {
       reviewRef: release.tag_name,
       snapshotUrl: buildRepositorySnapshotUrl(repository.full_name, release.tag_name),
       downloadUrl: asset.browser_download_url,
+      permissions,
       release: {
         tag: release.tag_name,
         name: release.name || release.tag_name,
@@ -82,24 +85,33 @@ async function buildRepositorySnapshot(context, repositoryRef, repository) {
     return { error: manifestError };
   }
 
-  return {
-    type: 'repository-tree',
-    pluginId: manifest.pluginId,
-    pluginName: manifest.name,
-    pluginDescription: manifest.description,
-    iconPath: manifest.iconPath,
-    iconUrl: buildRawGitHubContentUrl(repository.full_name, branch.commit.sha, manifest.iconPath),
-    version: manifest.version,
-    minversion: manifest.minversion,
-    repository: repository.full_name,
-    repositoryUrl: repository.html_url,
-    reviewRef: branch.commit.sha,
-    snapshotUrl: buildRepositorySnapshotUrl(repository.full_name, branch.commit.sha),
-    branch: repository.default_branch,
-    commitSha: branch.commit.sha,
-    downloadUrl: buildRepositoryArchiveUrl(repository.full_name, branch.commit.sha),
-    release: null,
-  };
+  const archiveUrl = buildRepositoryArchiveUrl(repository.full_name, branch.commit.sha);
+  const workspace = await prepareArchiveWorkspace(archiveUrl);
+  try {
+    const permissions = analyzePluginPermissions(workspace.sourceDir, manifest);
+
+    return {
+      type: 'repository-tree',
+      pluginId: manifest.pluginId,
+      pluginName: manifest.name,
+      pluginDescription: manifest.description,
+      iconPath: manifest.iconPath,
+      iconUrl: buildRawGitHubContentUrl(repository.full_name, branch.commit.sha, manifest.iconPath),
+      version: manifest.version,
+      minversion: manifest.minversion,
+      repository: repository.full_name,
+      repositoryUrl: repository.html_url,
+      reviewRef: branch.commit.sha,
+      snapshotUrl: buildRepositorySnapshotUrl(repository.full_name, branch.commit.sha),
+      branch: repository.default_branch,
+      commitSha: branch.commit.sha,
+      downloadUrl: archiveUrl,
+      permissions,
+      release: null,
+    };
+  } finally {
+    cleanupDirectory(workspace.rootDir);
+  }
 }
 
 function buildRepositorySnapshotUrl(repositoryFullName, ref) {

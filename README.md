@@ -33,7 +33,7 @@ MoeKoeMusic 官方插件登记与索引仓库。
 2. 选择 `操作类型`
    - `新上架`
    - `更新插件`
-3. 填写仓库地址、权限声明等信息
+3. 填写仓库地址等信息
 4. Action 自动进行基础校验
 5. 维护者人工审核
 6. 审核通过后使用 `Close as completed`
@@ -105,6 +105,10 @@ MoeKoeMusic 官方插件登记与索引仓库。
 - `repositoryUrl`：插件源码仓库地址
 - `downloadUrl`：当前审核通过版本的下载地址
 - `buildRequired`：是否需要编译安装
+- `networkAccess`：是否检测到网络访问能力
+- `fileAccess`：是否检测到本地文件读写能力
+- `binaryContent`：是否检测到可执行二进制或 Native Host 能力
+- `storageAccess`：是否检测到存储权限
 - `approvedAt`：审核通过时间
 - `approvedIssueNumber`：对应审核 Issue 编号
 - `approvedIssueUrl`：对应审核 Issue 地址
@@ -143,7 +147,7 @@ Issue 关闭方式含义如下：
 - `Close as completed`：审核通过，自动生成 PR
 - `Close as not planned`：审核不通过，不做数据变更
 
-## 插件列表
+## [插件列表](https://music.moekoe.cn/plugins.html)
 
 <!-- PLUGIN_LIST_START -->
 | 图标 | ID | 名称 | 描述 | 版本 | 状态 | 作者 | 下载地址 |

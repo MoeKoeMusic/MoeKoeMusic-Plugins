@@ -42,39 +42,6 @@ body:
     validations:
       required: true
 
-  - type: dropdown
-    id: network_access
-    attributes:
-      label: 是否包含网络请求
-      description: 插件是否会主动访问第三方网络服务
-      options:
-        - 否
-        - 是
-    validations:
-      required: true
-
-  - type: dropdown
-    id: file_access
-    attributes:
-      label: 是否包含本地文件读写
-      description: 插件是否会读取或写入用户本地文件
-      options:
-        - 否
-        - 是
-    validations:
-      required: true
-
-  - type: dropdown
-    id: binary_content
-    attributes:
-      label: 是否包含可执行二进制
-      description: 例如 exe、dll、so、node 原生模块等
-      options:
-        - 否
-        - 是
-    validations:
-      required: true
-
   - type: textarea
     id: extra_notes
     attributes:

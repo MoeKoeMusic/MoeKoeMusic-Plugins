@@ -7,9 +7,6 @@ const FORM_FIELD_TITLES = {
   pluginId: '插件唯一 ID',
   repositoryUrl: 'GitHub 仓库地址',
   buildRequired: '安装前是否需要编译',
-  networkAccess: '是否包含网络请求',
-  fileAccess: '是否包含本地文件读写',
-  binaryContent: '是否包含可执行二进制',
   extraNotes: '补充说明',
   confirmations: '提交确认',
 };

@@ -111,6 +111,7 @@ function buildPluginRecord(issue, payload, existingPlugin) {
     networkAccess: payload.plugin.networkAccess,
     fileAccess: payload.plugin.fileAccess,
     binaryContent: payload.plugin.binaryContent,
+    storageAccess: payload.plugin.storageAccess,
     approvedAt: new Date().toISOString(),
     approvedIssueNumber: issue.number,
     approvedIssueUrl: issue.html_url,

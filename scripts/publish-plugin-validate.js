@@ -21,9 +21,6 @@ const REQUIRED_FIELDS = [
   ['操作类型', 'operationType'],
   ['GitHub 仓库地址', 'repositoryUrl'],
   ['安装前是否需要编译', 'buildRequired'],
-  ['是否包含网络请求', 'networkAccess'],
-  ['是否包含本地文件读写', 'fileAccess'],
-  ['是否包含可执行二进制', 'binaryContent'],
   ['提交确认', 'confirmations'],
 ];
 
@@ -76,9 +73,10 @@ function createResult(issue, formData) {
         description: '',
         repositoryUrl: formData.repositoryUrl || '',
         buildRequired: isYesOption(formData.buildRequired),
-        networkAccess: toBoolean(formData.networkAccess),
-        fileAccess: toBoolean(formData.fileAccess),
-        binaryContent: toBoolean(formData.binaryContent),
+        networkAccess: false,
+        fileAccess: false,
+        binaryContent: false,
+        storageAccess: false,
       },
       snapshot: null,
     },
@@ -134,6 +132,10 @@ async function validateOperation(context, issue, formData, result) {
   result.payload.plugin.id = snapshot.pluginId;
   result.payload.plugin.name = snapshot.pluginName;
   result.payload.plugin.description = snapshot.pluginDescription;
+  result.payload.plugin.networkAccess = snapshot.permissions?.networkAccess === true;
+  result.payload.plugin.fileAccess = snapshot.permissions?.fileAccess === true;
+  result.payload.plugin.binaryContent = snapshot.permissions?.binaryContent === true;
+  result.payload.plugin.storageAccess = snapshot.permissions?.storageAccess === true;
   result.payload.snapshot = snapshot;
 
   const existingPlugin = findPluginById(snapshot.pluginId);
@@ -180,16 +182,6 @@ function validateUpdatePermission(existingPlugin, pluginId, formData, issue, res
   }
 }
 
-function toBoolean(value) {
-  if (value === '是') {
-    return true;
-  }
-  if (value === '否') {
-    return false;
-  }
-  return null;
-}
-
 function buildCommentBody(result) {
   const lines = [
     COMMENT_MARKER,
@@ -207,6 +199,7 @@ function buildCommentBody(result) {
   appendSection(lines, '校验失败项', result.failures);
   appendSection(lines, '提示信息', result.notices);
   appendSection(lines, '锁定快照', buildSnapshotFacts(result.snapshot));
+  appendSection(lines, '插件权限', buildPermissionFacts(result.snapshot?.permissions));
 
   lines.push(buildHiddenSnapshotPayload(result.payload));
 
@@ -240,6 +233,42 @@ function buildSnapshotFacts(snapshot) {
   }
 
   return facts;
+}
+
+function buildPermissionFacts(permissions) {
+  if (!permissions) {
+    return [];
+  }
+
+  return [
+    `网络访问：${formatBoolean(permissions.networkAccess)}`,
+    `本地文件读写：${formatBoolean(permissions.fileAccess)}`,
+    `可执行二进制：${formatBoolean(permissions.binaryContent)}`,
+    `存储权限：${formatBoolean(permissions.storageAccess)}`,
+    ...formatPermissionEvidence(permissions.evidence),
+  ];
+}
+
+function formatPermissionEvidence(evidence) {
+  if (!evidence || typeof evidence !== 'object') {
+    return [];
+  }
+
+  const labels = {
+    networkAccess: '网络访问依据',
+    fileAccess: '本地文件读写依据',
+    binaryContent: '可执行二进制依据',
+    storageAccess: '存储权限依据',
+  };
+
+  return Object.entries(labels).flatMap(([key, label]) => {
+    const items = Array.isArray(evidence[key]) ? evidence[key] : [];
+    return items.map((item) => `${label}：${item}`);
+  });
+}
+
+function formatBoolean(value) {
+  return value === true ? '是' : '否';
 }
 
 function appendSection(lines, title, items) {
@@ -303,6 +332,7 @@ async function writeStepSummary(result) {
   appendSection(lines, '校验失败项', result.failures);
   appendSection(lines, '提示信息', result.notices);
   appendSection(lines, '锁定快照', buildSnapshotFacts(result.snapshot));
+  appendSection(lines, '自动识别权限', buildPermissionFacts(result.snapshot?.permissions));
 
   fs.appendFileSync(summaryPath, `${lines.join('\n')}\n`, 'utf8');
 }
