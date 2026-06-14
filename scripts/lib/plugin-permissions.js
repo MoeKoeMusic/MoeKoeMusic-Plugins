@@ -61,7 +61,7 @@ function analyzePluginPermissions(sourceDir, manifest) {
     storageAccess: false,
   };
 
-  if (declaredPermissions.has(NATIVE_HOST_PERMISSION) || hasNativeHostDeclarations(content)) {
+  if (hasNativeHostCapability(content)) {
     addEvidence(evidence, 'binaryContent', 'manifest 声明 moekoe:nativeHost 或 moekoe_native_hosts');
   }
 
@@ -117,6 +117,11 @@ function readStringArray(value) {
 
 function hasNativeHostDeclarations(manifestContent) {
   return Array.isArray(manifestContent.moekoe_native_hosts) && manifestContent.moekoe_native_hosts.length > 0;
+}
+
+function hasNativeHostCapability(manifestContent) {
+  const declaredPermissions = collectDeclaredPermissions(manifestContent);
+  return declaredPermissions.has(NATIVE_HOST_PERMISSION) || hasNativeHostDeclarations(manifestContent);
 }
 
 function hasNetworkPermission(permissions) {
@@ -273,4 +278,5 @@ module.exports = {
   NATIVE_HOST_PERMISSION,
   STORAGE_PERMISSION,
   analyzePluginPermissions,
+  hasNativeHostCapability,
 };

@@ -65,6 +65,8 @@ MoeKoeMusic 官方插件登记与索引仓库。
 - 仓库中必须存在 `manifest.json`
 - `manifest.json` 中必须包含合法的 `plugin_id`
 - `manifest.json` 中必须包含插件名称 `name` 和插件描述 `description`
+- `manifest.json` 中的 `moekoe` 字段必须为 `true`
+- 使用 `moekoe:nativeHost` 时，`manifest.json` 中的 `minversion` 必须大于或等于 `1.6.6`
 - 审核只做元数据和静态信息检查，不执行第三方插件代码
 
 ### 下架插件的校验规则
@@ -126,6 +128,8 @@ MoeKoeMusic 官方插件登记与索引仓库。
 - 不要提交私有仓库或无权限访问的仓库
 - 仓库中必须包含有效的 `manifest.json`
 - `manifest.json` 中的插件描述应清晰说明真实用途
+- `manifest.json` 中需要声明 `moekoe: true`
+- 使用 `moekoe:nativeHost` 的插件需要在 `manifest.json` 中声明 `minversion >= 1.6.6`
 - 如果是 `更新插件`，请确认当前提交账号就是插件记录中的作者账号
 - 如果插件需要编译安装，请确保对应审核版本已有可下载的发行产物
 - 如果插件不需要编译安装，仓库应能直接对应到可审核的源码快照

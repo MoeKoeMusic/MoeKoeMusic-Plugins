@@ -185,7 +185,7 @@ function validateUpdatePermission(existingPlugin, pluginId, formData, issue, res
 function buildCommentBody(result) {
   const lines = [
     COMMENT_MARKER,
-    '## 插件提交自动校验结果',
+    '## 插件提交校验结果',
     '',
     `- 当前状态：\`${result.status}\``,
     `- 操作类型：${result.payload.operationType || '未解析到'}`,

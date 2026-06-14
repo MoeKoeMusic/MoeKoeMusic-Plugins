@@ -5,8 +5,14 @@ const {
   fetchLatestRelease,
   fetchManifest,
 } = require('./publish-plugin-common');
-const { analyzePluginPermissions } = require('./plugin-permissions');
+const {
+  NATIVE_HOST_PERMISSION,
+  analyzePluginPermissions,
+  hasNativeHostCapability,
+} = require('./plugin-permissions');
 const { cleanupDirectory, prepareArchiveWorkspace, readManifestFromDirectory } = require('./snapshot-archive');
+
+const MIN_NATIVE_HOST_MOEKOE_VERSION = '1.6.6';
 
 async function resolvePublishSnapshot(context, repositoryRef, repository, requiresBuild) {
   return requiresBuild
@@ -176,6 +182,14 @@ function validateManifest(manifest) {
     return `${MANIFEST_FILE} 中的 minversion 格式无效：\`${manifest.minversion}\`。`;
   }
 
+  const capabilityErrors = [
+    validateMoekoeManifest(manifest),
+    validateNativeHostManifest(manifest),
+  ].filter(Boolean);
+  if (capabilityErrors.length > 0) {
+    return capabilityErrors.join(' ');
+  }
+
   return '';
 }
 
@@ -185,6 +199,38 @@ function isValidPluginId(pluginId) {
 
 function isValidVersion(version) {
   return /^\d+\.\d+\.\d+$/.test(String(version || '').trim());
+}
+
+function validateMoekoeManifest(manifest) {
+  const content = manifest?.content && typeof manifest.content === 'object' ? manifest.content : {};
+  return content.moekoe === true ? '' : `${MANIFEST_FILE} 中的 \`moekoe\` 字段必须为 \`true\`。`;
+}
+
+function validateNativeHostManifest(manifest) {
+  const content = manifest?.content && typeof manifest.content === 'object' ? manifest.content : {};
+  if (!hasNativeHostCapability(content)) {
+    return '';
+  }
+
+  if (!manifest.minversion || compareVersions(manifest.minversion, MIN_NATIVE_HOST_MOEKOE_VERSION) < 0) {
+    return `${MANIFEST_FILE} 使用 \`${NATIVE_HOST_PERMISSION}\` 时，\`minversion\` 必须大于或等于 \`${MIN_NATIVE_HOST_MOEKOE_VERSION}\`。`;
+  }
+
+  return '';
+}
+
+function compareVersions(left, right) {
+  const leftParts = String(left || '').split('.').map(Number);
+  const rightParts = String(right || '').split('.').map(Number);
+
+  for (let index = 0; index < 3; index += 1) {
+    const difference = (leftParts[index] || 0) - (rightParts[index] || 0);
+    if (difference !== 0) {
+      return difference;
+    }
+  }
+
+  return 0;
 }
 
 module.exports = {
