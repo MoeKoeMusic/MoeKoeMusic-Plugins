@@ -1,5 +1,48 @@
 [
   {
+    "id": "Taskbar-Lyrics",
+    "name": "Windows任务栏歌词插件",
+    "description": "在 Windows 任务栏上显示逐字高亮歌词，支持卡拉OK效果和播放控制",
+    "iconUrl": "https://raw.githubusercontent.com/Yngu196/TaskbarLyrics/v0.4.1/public/icons/icon256.png",
+    "version": "0.4.1",
+    "minversion": "1.6.6",
+    "status": "active",
+    "author": "Yngu196",
+    "repositoryUrl": "https://github.com/Yngu196/TaskbarLyrics",
+    "downloadUrl": "https://github.com/Yngu196/TaskbarLyrics/releases/download/v0.4.1/moeKoe-taskbar-lyrics.zip",
+    "buildRequired": true,
+    "networkAccess": true,
+    "fileAccess": false,
+    "binaryContent": true,
+    "storageAccess": true,
+    "approvedAt": "2026-06-22T06:10:55.146Z",
+    "approvedIssueNumber": 90,
+    "approvedIssueUrl": "https://github.com/MoeKoeMusic/MoeKoeMusic-Plugins/issues/90",
+    "snapshot": {
+      "type": "release-asset",
+      "pluginId": "Taskbar-Lyrics",
+      "pluginName": "Windows任务栏歌词插件",
+      "pluginDescription": "在 Windows 任务栏上显示逐字高亮歌词，支持卡拉OK效果和播放控制",
+      "iconPath": "public/icons/icon256.png",
+      "iconUrl": "https://raw.githubusercontent.com/Yngu196/TaskbarLyrics/v0.4.1/public/icons/icon256.png",
+      "version": "0.4.1",
+      "minversion": "1.6.6",
+      "repository": "Yngu196/TaskbarLyrics",
+      "repositoryUrl": "https://github.com/Yngu196/TaskbarLyrics",
+      "reviewRef": "v0.4.1",
+      "snapshotUrl": "https://github.com/Yngu196/TaskbarLyrics/tree/v0.4.1",
+      "downloadUrl": "https://github.com/Yngu196/TaskbarLyrics/releases/download/v0.4.1/moeKoe-taskbar-lyrics.zip",
+      "release": {
+        "tag": "v0.4.1",
+        "name": "v0.4.1",
+        "publishedAt": "2026-06-16T15:46:46Z",
+        "assetName": "moeKoe-taskbar-lyrics.zip",
+        "assetSize": 642277,
+        "downloadUrl": "https://github.com/Yngu196/TaskbarLyrics/releases/download/v0.4.1/moeKoe-taskbar-lyrics.zip"
+      }
+    }
+  },
+  {
     "id": "moekoe-lyric-desktop",
     "name": "MoeKoe 桌面歌词(Windows)",
     "description": "一个MoeKoe Music的Windows第三方桌面歌词程序插件.",
@@ -115,46 +158,6 @@
       "commitSha": "685783549e3ebdeab379e6e56fc9aadf921f004b",
       "downloadUrl": "https://github.com/BB-CHICKEN/MoeKoe-Music-Total-Play-Time/archive/685783549e3ebdeab379e6e56fc9aadf921f004b.zip",
       "release": null
-    }
-  },
-  {
-    "id": "Taskbar-Lyrics",
-    "name": "Windows任务栏歌词插件",
-    "description": "为Windows端播放器提供任务栏（状态栏）歌词功能，可暂停或播放下一首/上一首",
-    "iconUrl": "https://raw.githubusercontent.com/Yngu196/TaskbarLyrics/v0.3.8/public/icons/icon256.png",
-    "version": "0.3.8",
-    "minversion": "0.3.0",
-    "status": "active",
-    "author": "Yngu196",
-    "repositoryUrl": "https://github.com/Yngu196/TaskbarLyrics",
-    "downloadUrl": "https://github.com/Yngu196/TaskbarLyrics/releases/download/v0.3.8/moeKoe-taskbar-lyrics.zip",
-    "buildRequired": true,
-    "networkAccess": false,
-    "fileAccess": true,
-    "binaryContent": true,
-    "approvedAt": "2026-06-11T09:19:45.022Z",
-    "approvedIssueNumber": 83,
-    "approvedIssueUrl": "https://github.com/MoeKoeMusic/MoeKoeMusic-Plugins/issues/83",
-    "snapshot": {
-      "type": "release-asset",
-      "pluginId": "Taskbar-Lyrics",
-      "iconPath": "public/icons/icon256.png",
-      "iconUrl": "https://raw.githubusercontent.com/Yngu196/TaskbarLyrics/v0.3.8/public/icons/icon256.png",
-      "version": "0.3.8",
-      "minversion": "0.3.0",
-      "repository": "Yngu196/TaskbarLyrics",
-      "repositoryUrl": "https://github.com/Yngu196/TaskbarLyrics",
-      "reviewRef": "v0.3.8",
-      "snapshotUrl": "https://github.com/Yngu196/TaskbarLyrics/tree/v0.3.8",
-      "downloadUrl": "https://github.com/Yngu196/TaskbarLyrics/releases/download/v0.3.8/moeKoe-taskbar-lyrics.zip",
-      "release": {
-        "tag": "v0.3.8",
-        "name": "v0.3.8",
-        "publishedAt": "2026-06-11T08:43:33Z",
-        "assetName": "moeKoe-taskbar-lyrics.zip",
-        "assetSize": 761032,
-        "downloadUrl": "https://github.com/Yngu196/TaskbarLyrics/releases/download/v0.3.8/moeKoe-taskbar-lyrics.zip"
-      }
     }
   },
   {
