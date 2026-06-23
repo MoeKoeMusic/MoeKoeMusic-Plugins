@@ -1,5 +1,48 @@
 [
   {
+    "id": "blue_archive-theme",
+    "name": "蔚蓝档案主题",
+    "description": "The sky blue archive✨",
+    "iconUrl": "https://raw.githubusercontent.com/LateDreamXD/moekoe-blue_archive-theme/v0.3.0/public/assets/icon.png",
+    "version": "0.3.0",
+    "minversion": "1.6.2",
+    "status": "active",
+    "author": "LateDreamXD",
+    "repositoryUrl": "https://github.com/LateDreamXD/moekoe-blue_archive-theme",
+    "downloadUrl": "https://github.com/LateDreamXD/moekoe-blue_archive-theme/releases/download/v0.3.0/ba-theme-v0.3.0.zip",
+    "buildRequired": true,
+    "networkAccess": true,
+    "fileAccess": false,
+    "binaryContent": false,
+    "storageAccess": true,
+    "approvedAt": "2026-06-23T01:37:49.079Z",
+    "approvedIssueNumber": 97,
+    "approvedIssueUrl": "https://github.com/MoeKoeMusic/MoeKoeMusic-Plugins/issues/97",
+    "snapshot": {
+      "type": "release-asset",
+      "pluginId": "blue_archive-theme",
+      "pluginName": "蔚蓝档案主题",
+      "pluginDescription": "The sky blue archive✨",
+      "iconPath": "public/assets/icon.png",
+      "iconUrl": "https://raw.githubusercontent.com/LateDreamXD/moekoe-blue_archive-theme/v0.3.0/public/assets/icon.png",
+      "version": "0.3.0",
+      "minversion": "1.6.2",
+      "repository": "LateDreamXD/moekoe-blue_archive-theme",
+      "repositoryUrl": "https://github.com/LateDreamXD/moekoe-blue_archive-theme",
+      "reviewRef": "v0.3.0",
+      "snapshotUrl": "https://github.com/LateDreamXD/moekoe-blue_archive-theme/tree/v0.3.0",
+      "downloadUrl": "https://github.com/LateDreamXD/moekoe-blue_archive-theme/releases/download/v0.3.0/ba-theme-v0.3.0.zip",
+      "release": {
+        "tag": "v0.3.0",
+        "name": "v0.3.0",
+        "publishedAt": "2026-06-22T11:31:14Z",
+        "assetName": "ba-theme-v0.3.0.zip",
+        "assetSize": 24125706,
+        "downloadUrl": "https://github.com/LateDreamXD/moekoe-blue_archive-theme/releases/download/v0.3.0/ba-theme-v0.3.0.zip"
+      }
+    }
+  },
+  {
     "id": "Taskbar-Lyrics",
     "name": "Windows任务栏歌词插件",
     "description": "在 Windows 任务栏上显示逐字高亮歌词，支持卡拉OK效果和播放控制",
@@ -116,49 +159,6 @@
       "commitSha": "f4b755b034e3797efa901d3e459909a6093b918b",
       "downloadUrl": "https://github.com/MoeKoeMusic/moekoe-lyric-desktop/archive/f4b755b034e3797efa901d3e459909a6093b918b.zip",
       "release": null
-    }
-  },
-  {
-    "id": "blue_archive-theme",
-    "name": "蔚蓝档案主题",
-    "description": "The sky blue archive✨",
-    "iconUrl": "https://raw.githubusercontent.com/LateDreamXD/moekoe-blue_archive-theme/v0.2.2/public/assets/icon.png",
-    "version": "0.2.2",
-    "minversion": "1.6.2",
-    "status": "active",
-    "author": "LateDreamXD",
-    "repositoryUrl": "https://github.com/LateDreamXD/moekoe-blue_archive-theme",
-    "downloadUrl": "https://github.com/LateDreamXD/moekoe-blue_archive-theme/releases/download/v0.2.2/ba-theme-v0.2.2.zip",
-    "buildRequired": true,
-    "networkAccess": true,
-    "fileAccess": false,
-    "binaryContent": false,
-    "storageAccess": true,
-    "approvedAt": "2026-06-15T09:05:08.797Z",
-    "approvedIssueNumber": 88,
-    "approvedIssueUrl": "https://github.com/MoeKoeMusic/MoeKoeMusic-Plugins/issues/88",
-    "snapshot": {
-      "type": "release-asset",
-      "pluginId": "blue_archive-theme",
-      "pluginName": "蔚蓝档案主题",
-      "pluginDescription": "The sky blue archive✨",
-      "iconPath": "public/assets/icon.png",
-      "iconUrl": "https://raw.githubusercontent.com/LateDreamXD/moekoe-blue_archive-theme/v0.2.2/public/assets/icon.png",
-      "version": "0.2.2",
-      "minversion": "1.6.2",
-      "repository": "LateDreamXD/moekoe-blue_archive-theme",
-      "repositoryUrl": "https://github.com/LateDreamXD/moekoe-blue_archive-theme",
-      "reviewRef": "v0.2.2",
-      "snapshotUrl": "https://github.com/LateDreamXD/moekoe-blue_archive-theme/tree/v0.2.2",
-      "downloadUrl": "https://github.com/LateDreamXD/moekoe-blue_archive-theme/releases/download/v0.2.2/ba-theme-v0.2.2.zip",
-      "release": {
-        "tag": "v0.2.2",
-        "name": "v0.2.2",
-        "publishedAt": "2026-06-15T05:47:10Z",
-        "assetName": "ba-theme-v0.2.2.zip",
-        "assetSize": 24124940,
-        "downloadUrl": "https://github.com/LateDreamXD/moekoe-blue_archive-theme/releases/download/v0.2.2/ba-theme-v0.2.2.zip"
-      }
     }
   },
   {
