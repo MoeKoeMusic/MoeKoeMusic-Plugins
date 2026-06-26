@@ -316,7 +316,7 @@ async function requestAiAudit(auditInput) {
   const data = await response.json();
   const rawContent = data.choices?.[0]?.message?.content;
   if (!rawContent) {
-    throw new Error('AI 审核接口未返回有效内容。');
+    throw new Error('AI 审核接口未返回有效内容。'+`响应数据：${JSON.stringify(data)}`);
   }
   console.warn(rawContent);
   return parseAiJsonResponse(rawContent);
