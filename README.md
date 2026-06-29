@@ -4,6 +4,9 @@ MoeKoeMusic 官方插件登记与索引仓库。
 
 这个仓库不是插件源码仓库，而是 **插件市场登记仓库**，主要负责接收插件申请、保存审核通过后的快照信息，并维护客户端可读取的插件索引。
 
+👉 [上架/更新插件](https://github.com/MoeKoeMusic/MoeKoeMusic-Plugins/issues/new?template=plugin_publish.yml)  | 🚫 [下架/举报插件](https://github.com/MoeKoeMusic/MoeKoeMusic-Plugins/issues/new?template=plugin_delist.yml)
+
+
 ## 仓库用途
 
 这个仓库主要用于：
