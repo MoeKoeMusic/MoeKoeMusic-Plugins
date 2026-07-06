@@ -1,5 +1,47 @@
 [
   {
+    "id": "late-lib",
+    "name": "LateLib",
+    "description": "LateDream's library for moekoe music plugins",
+    "iconUrl": "https://raw.githubusercontent.com/LateDreamXD/moekoe-latelib/v0.1.0/public/icon.png",
+    "version": "0.1.0",
+    "status": "active",
+    "author": "LateDreamXD",
+    "repositoryUrl": "https://github.com/LateDreamXD/moekoe-latelib",
+    "downloadUrl": "https://github.com/LateDreamXD/moekoe-latelib/releases/download/v0.1.0/latelib-v0.1.0.zip",
+    "buildRequired": true,
+    "networkAccess": false,
+    "fileAccess": false,
+    "binaryContent": false,
+    "storageAccess": true,
+    "approvedAt": "2026-07-06T01:51:52.847Z",
+    "approvedIssueNumber": 123,
+    "approvedIssueUrl": "https://github.com/MoeKoeMusic/MoeKoeMusic-Plugins/issues/123",
+    "snapshot": {
+      "type": "release-asset",
+      "pluginId": "late-lib",
+      "pluginName": "LateLib",
+      "pluginDescription": "LateDream's library for moekoe music plugins",
+      "iconPath": "public/icon.png",
+      "iconUrl": "https://raw.githubusercontent.com/LateDreamXD/moekoe-latelib/v0.1.0/public/icon.png",
+      "version": "0.1.0",
+      "minversion": "",
+      "repository": "LateDreamXD/moekoe-latelib",
+      "repositoryUrl": "https://github.com/LateDreamXD/moekoe-latelib",
+      "reviewRef": "v0.1.0",
+      "snapshotUrl": "https://github.com/LateDreamXD/moekoe-latelib/tree/v0.1.0",
+      "downloadUrl": "https://github.com/LateDreamXD/moekoe-latelib/releases/download/v0.1.0/latelib-v0.1.0.zip",
+      "release": {
+        "tag": "v0.1.0",
+        "name": "LateLib v0.1.0",
+        "publishedAt": "2026-07-06T01:46:45Z",
+        "assetName": "latelib-v0.1.0.zip",
+        "assetSize": 49699,
+        "downloadUrl": "https://github.com/LateDreamXD/moekoe-latelib/releases/download/v0.1.0/latelib-v0.1.0.zip"
+      }
+    }
+  },
+  {
     "id": "moekoe-equalizer",
     "name": "31段均衡器音效插件",
     "description": "31段均衡器插件-为MoeKoeMusic提供音频处理-（首次安装-请点击托盘-MoeKoeMusic-再点击重启应用-重启完成之后即可正常使用）",
