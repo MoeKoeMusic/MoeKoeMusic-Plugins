@@ -122,7 +122,7 @@
     "description": "为MoeKoe Music提供独立全局自定义动态背景，无需其他背景插件打底，永久保存视频，支持透明度调节，与其他背景插件互斥除自定义背景以外，需配合自定义背景插件使用。",
     "iconUrl": "https://raw.githubusercontent.com/qiuyue123-star/global-video-bg-plugin/5e86ce1df04e798721cd518f7cdaa6bc682e3747/icons/icon16.png",
     "version": "1.0.2",
-    "status": "active",
+    "status": "delisted",
     "author": "qiuyue123-star",
     "repositoryUrl": "https://github.com/qiuyue123-star/global-video-bg-plugin",
     "downloadUrl": "https://github.com/qiuyue123-star/global-video-bg-plugin/archive/5e86ce1df04e798721cd518f7cdaa6bc682e3747.zip",
