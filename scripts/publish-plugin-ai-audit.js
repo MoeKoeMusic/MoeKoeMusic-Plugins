@@ -314,7 +314,7 @@ async function requestAiAudit(auditInput) {
   }
 
   const data = await response.json();
-  const rawContent = data.choices?.[0]?.message?.reasoning_content;
+  const rawContent = extractAiResponseContent(data);
   if (!rawContent) {
     throw new Error('AI 审核接口未返回有效内容。'+`响应数据：${JSON.stringify(data)}`);
   }
@@ -322,12 +322,17 @@ async function requestAiAudit(auditInput) {
   return parseAiJsonResponse(rawContent);
 }
 
+function extractAiResponseContent(data) {
+  const message = data.choices?.[0]?.message;
+  return message?.content || message?.reasoning_content;
+}
+
 function parseAiJsonResponse(rawContent) {
   const content = Array.isArray(rawContent)
     ? rawContent.map((item) => (typeof item === 'string' ? item : item?.text || '')).join('')
     : String(rawContent);
 
-  const trimmed = content.trim();
+  const trimmed = content.replace(/<think>[\s\S]*?<\/think>/gi, '').trim() || content.trim();
 
   try {
     return JSON.parse(trimmed);
