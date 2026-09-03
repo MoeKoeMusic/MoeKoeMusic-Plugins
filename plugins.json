@@ -1,5 +1,48 @@
 [
   {
+    "id": "Taskbar-Lyrics",
+    "name": "Windows任务栏歌词插件",
+    "description": "在 Windows 任务栏上显示歌词，支持x64，原生arm64处于测试阶段",
+    "iconUrl": "https://raw.githubusercontent.com/Yngu196/TaskbarLyrics/v1.0.6/public/icons/icon256.png",
+    "version": "1.0.6",
+    "minversion": "1.6.6",
+    "status": "active",
+    "author": "Yngu196",
+    "repositoryUrl": "https://github.com/Yngu196/TaskbarLyrics",
+    "downloadUrl": "https://github.com/Yngu196/TaskbarLyrics/releases/download/v1.0.6/moeKoe-taskbar-lyrics.zip",
+    "buildRequired": true,
+    "networkAccess": true,
+    "fileAccess": false,
+    "binaryContent": true,
+    "storageAccess": true,
+    "approvedAt": "2026-09-03T01:50:57.271Z",
+    "approvedIssueNumber": 188,
+    "approvedIssueUrl": "https://github.com/MoeKoeMusic/MoeKoeMusic-Plugins/issues/188",
+    "snapshot": {
+      "type": "release-asset",
+      "pluginId": "Taskbar-Lyrics",
+      "pluginName": "Windows任务栏歌词插件",
+      "pluginDescription": "在 Windows 任务栏上显示歌词，支持x64，原生arm64处于测试阶段",
+      "iconPath": "public/icons/icon256.png",
+      "iconUrl": "https://raw.githubusercontent.com/Yngu196/TaskbarLyrics/v1.0.6/public/icons/icon256.png",
+      "version": "1.0.6",
+      "minversion": "1.6.6",
+      "repository": "Yngu196/TaskbarLyrics",
+      "repositoryUrl": "https://github.com/Yngu196/TaskbarLyrics",
+      "reviewRef": "v1.0.6",
+      "snapshotUrl": "https://github.com/Yngu196/TaskbarLyrics/tree/v1.0.6",
+      "downloadUrl": "https://github.com/Yngu196/TaskbarLyrics/releases/download/v1.0.6/moeKoe-taskbar-lyrics.zip",
+      "release": {
+        "tag": "v1.0.6",
+        "name": "v1.0.6",
+        "publishedAt": "2026-09-02T10:49:02Z",
+        "assetName": "moeKoe-taskbar-lyrics.zip",
+        "assetSize": 2956255,
+        "downloadUrl": "https://github.com/Yngu196/TaskbarLyrics/releases/download/v1.0.6/moeKoe-taskbar-lyrics.zip"
+      }
+    }
+  },
+  {
     "id": "blue_archive-theme",
     "name": "蔚蓝档案主题",
     "description": "The sky blue archive✨",
@@ -39,49 +82,6 @@
         "assetName": "ba-theme-v0.5.0.zip",
         "assetSize": 24573218,
         "downloadUrl": "https://github.com/LateDreamXD/moekoe-blue_archive-theme/releases/download/v0.5.0/ba-theme-v0.5.0.zip"
-      }
-    }
-  },
-  {
-    "id": "Taskbar-Lyrics",
-    "name": "Windows任务栏歌词插件",
-    "description": "在 Windows 任务栏上显示逐字高亮歌词，支持卡拉OK效果和播放控制",
-    "iconUrl": "https://raw.githubusercontent.com/Yngu196/TaskbarLyrics/v1.0.5/public/icons/icon256.png",
-    "version": "1.0.5",
-    "minversion": "1.6.6",
-    "status": "active",
-    "author": "Yngu196",
-    "repositoryUrl": "https://github.com/Yngu196/TaskbarLyrics",
-    "downloadUrl": "https://github.com/Yngu196/TaskbarLyrics/releases/download/v1.0.5/moeKoe-taskbar-lyrics.zip",
-    "buildRequired": true,
-    "networkAccess": true,
-    "fileAccess": false,
-    "binaryContent": true,
-    "storageAccess": true,
-    "approvedAt": "2026-08-25T02:16:00.816Z",
-    "approvedIssueNumber": 182,
-    "approvedIssueUrl": "https://github.com/MoeKoeMusic/MoeKoeMusic-Plugins/issues/182",
-    "snapshot": {
-      "type": "release-asset",
-      "pluginId": "Taskbar-Lyrics",
-      "pluginName": "Windows任务栏歌词插件",
-      "pluginDescription": "在 Windows 任务栏上显示逐字高亮歌词，支持卡拉OK效果和播放控制",
-      "iconPath": "public/icons/icon256.png",
-      "iconUrl": "https://raw.githubusercontent.com/Yngu196/TaskbarLyrics/v1.0.5/public/icons/icon256.png",
-      "version": "1.0.5",
-      "minversion": "1.6.6",
-      "repository": "Yngu196/TaskbarLyrics",
-      "repositoryUrl": "https://github.com/Yngu196/TaskbarLyrics",
-      "reviewRef": "v1.0.5",
-      "snapshotUrl": "https://github.com/Yngu196/TaskbarLyrics/tree/v1.0.5",
-      "downloadUrl": "https://github.com/Yngu196/TaskbarLyrics/releases/download/v1.0.5/moeKoe-taskbar-lyrics.zip",
-      "release": {
-        "tag": "v1.0.5",
-        "name": "v1.0.5",
-        "publishedAt": "2026-08-24T11:24:10Z",
-        "assetName": "moeKoe-taskbar-lyrics.zip",
-        "assetSize": 1433674,
-        "downloadUrl": "https://github.com/Yngu196/TaskbarLyrics/releases/download/v1.0.5/moeKoe-taskbar-lyrics.zip"
       }
     }
   },
