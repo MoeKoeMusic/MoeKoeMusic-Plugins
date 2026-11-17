@@ -13,6 +13,7 @@ const {
 const { cleanupDirectory, prepareArchiveWorkspace, readManifestFromDirectory } = require('./snapshot-archive');
 
 const MIN_NATIVE_HOST_MOEKOE_VERSION = '1.6.6';
+const MAX_PLUGIN_DESCRIPTION_LENGTH = 100;
 
 async function resolvePublishSnapshot(context, repositoryRef, repository, requiresBuild) {
   return requiresBuild
@@ -166,8 +167,12 @@ function validateManifest(manifest) {
   if (!manifest.description) {
     return `${MANIFEST_FILE} 缺少 description 字段。`;
   }
-  if (manifest.description.length < 5) {
+  const descriptionLength = [...manifest.description].length;
+  if (descriptionLength < 5) {
     return `${MANIFEST_FILE} 中的 description 过短，请至少提供更清晰真实的功能说明。`;
+  }
+  if (descriptionLength > MAX_PLUGIN_DESCRIPTION_LENGTH) {
+    return `${MANIFEST_FILE} 中的 description 过长，最多允许 ${MAX_PLUGIN_DESCRIPTION_LENGTH} 个字符。`;
   }
   if (!manifest.version) {
     return `${MANIFEST_FILE} 缺少 version 字段。`;

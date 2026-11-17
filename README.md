@@ -67,7 +67,7 @@ MoeKoeMusic 官方插件登记与索引仓库。
 - 插件仓库必须可公开访问
 - 仓库中必须存在 `manifest.json`
 - `manifest.json` 中必须包含合法的 `plugin_id`
-- `manifest.json` 中必须包含插件名称 `name` 和插件描述 `description`
+- `manifest.json` 中必须包含插件名称 `name` 和插件描述 `description`，描述最多 100 个字符
 - `manifest.json` 中的 `moekoe` 字段必须为 `true`
 - 使用 `moekoe:nativeHost` 时，`manifest.json` 中的 `minversion` 必须大于或等于 `1.6.6`
 - 审核只做元数据和静态信息检查，不执行第三方插件代码
